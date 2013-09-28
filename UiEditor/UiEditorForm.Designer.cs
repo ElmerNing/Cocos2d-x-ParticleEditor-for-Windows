@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.mPreviewPanel = new System.Windows.Forms.Panel();
             this.mTimeTick = new System.Windows.Forms.Timer(this.components);
-            this.uiDesignWidget1 = new UiEditor.UiDesignWidget();
+            this.mDesignWidget = new UiEditor.UiDesignWidget();
             this.SuspendLayout();
             // 
             // mPreviewPanel
             // 
-            this.mPreviewPanel.Location = new System.Drawing.Point(12, 12);
+            this.mPreviewPanel.Location = new System.Drawing.Point(676, 12);
             this.mPreviewPanel.Name = "mPreviewPanel";
             this.mPreviewPanel.Size = new System.Drawing.Size(640, 960);
             this.mPreviewPanel.TabIndex = 0;
@@ -46,19 +46,19 @@
             this.mTimeTick.Enabled = true;
             this.mTimeTick.Tick += new System.EventHandler(this.OnTimeTick);
             // 
-            // uiDesignWidget1
+            // mDesignWidget
             // 
-            this.uiDesignWidget1.Location = new System.Drawing.Point(848, 12);
-            this.uiDesignWidget1.Name = "uiDesignWidget1";
-            this.uiDesignWidget1.Size = new System.Drawing.Size(452, 1092);
-            this.uiDesignWidget1.TabIndex = 1;
+            this.mDesignWidget.Location = new System.Drawing.Point(12, 15);
+            this.mDesignWidget.Name = "mDesignWidget";
+            this.mDesignWidget.Size = new System.Drawing.Size(734, 1092);
+            this.mDesignWidget.TabIndex = 1;
             // 
             // UiEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1328, 1054);
-            this.Controls.Add(this.uiDesignWidget1);
+            this.Controls.Add(this.mDesignWidget);
             this.Controls.Add(this.mPreviewPanel);
             this.Name = "UiEditorForm";
             this.Text = "Form1";
@@ -71,7 +71,7 @@
 
         private System.Windows.Forms.Panel mPreviewPanel;
         private System.Windows.Forms.Timer mTimeTick;
-        private UiDesignWidget uiDesignWidget1;
+        private UiDesignWidget mDesignWidget;
     }
 }
 

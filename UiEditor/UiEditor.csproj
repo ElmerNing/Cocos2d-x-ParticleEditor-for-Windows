@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\Debug.win32\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;UIEDITOR_SPECIAL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -49,6 +49,12 @@
   <ItemGroup>
     <Compile Include="Cocos2dDllImporter.cs" />
     <Compile Include="DllImporter.cs" />
+    <Compile Include="PropertyWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PropertyWidget.Designer.cs">
+      <DependentUpon>PropertyWidget.cs</DependentUpon>
+    </Compile>
     <Compile Include="UiDesignWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <Compile Include="UI\CCPoint.cs" />
     <Compile Include="UI\CCSize.cs" />
     <Compile Include="UI\CCSprite.cs" />
+    <EmbeddedResource Include="PropertyWidget.resx">
+      <DependentUpon>PropertyWidget.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UiDesignWidget.resx">
       <DependentUpon>UiDesignWidget.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +94,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

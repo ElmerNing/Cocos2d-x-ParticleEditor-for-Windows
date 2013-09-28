@@ -473,7 +473,14 @@ namespace Newtonsoft.Json.Serialization
         TraceWriter.Trace(TraceLevel.Verbose, JsonPosition.FormatMessage(null, writer.Path, "Writing type name '{0}' for {1}.".FormatWith(CultureInfo.InvariantCulture, typeName, type)), null);
 
       writer.WritePropertyName(JsonTypeReflector.TypePropertyName, false);
-      writer.WriteValue(typeName);
+
+#if UIEDITOR_SPECIAL
+#warning 忽略Type的命名空间和程序集
+        string[] splits = type.FullName.Split('.');
+        writer.WriteValue(splits[splits.Length-1]);
+#else
+        writer.WriteValue(typeName);
+#endif
     }
 
     private bool HasFlag(DefaultValueHandling value, DefaultValueHandling flag)

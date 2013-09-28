@@ -31,18 +31,20 @@
             this.mNodesTree = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.propertyWidget1 = new UiEditor.PropertyWidget();
             this.SuspendLayout();
             // 
             // mNodesTree
             // 
-            this.mNodesTree.Location = new System.Drawing.Point(264, 0);
+            this.mNodesTree.Location = new System.Drawing.Point(3, 3);
             this.mNodesTree.Name = "mNodesTree";
             this.mNodesTree.Size = new System.Drawing.Size(185, 960);
             this.mNodesTree.TabIndex = 0;
+            this.mNodesTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.OnAfterSelect);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(25, 19);
+            this.button1.Location = new System.Drawing.Point(253, 20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -51,22 +53,30 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(128, 18);
+            this.button2.Location = new System.Drawing.Point(365, 20);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
             this.button2.Text = "打开";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // propertyWidget1
+            // 
+            this.propertyWidget1.Location = new System.Drawing.Point(194, 64);
+            this.propertyWidget1.Name = "propertyWidget1";
+            this.propertyWidget1.Size = new System.Drawing.Size(526, 874);
+            this.propertyWidget1.TabIndex = 3;
+            // 
             // UiDesignWidget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.propertyWidget1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mNodesTree);
             this.Name = "UiDesignWidget";
-            this.Size = new System.Drawing.Size(452, 960);
+            this.Size = new System.Drawing.Size(723, 960);
             this.ResumeLayout(false);
 
         }
@@ -76,5 +86,6 @@
         private System.Windows.Forms.TreeView mNodesTree;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private PropertyWidget propertyWidget1;
     }
 }

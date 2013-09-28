@@ -27,8 +27,7 @@ namespace UiEditor
             CCNodeRGBA node1 = new CCNodeRGBA();
             node1.opacity = 1;
 
-            node.children = new Dictionary<string, CCNode>();
-            node.children.Add("123", node1);
+            node.addChild("123", node1);
 
             List<Type> knowtypes = new List<Type>();
             foreach (Type t in Assembly.GetExecutingAssembly().GetTypes())
@@ -39,7 +38,7 @@ namespace UiEditor
                 }
 
             }
-            
+            /*
             JsonSerializerSettings setting = new JsonSerializerSettings();
             //setting.ObjectCreationHandling = ObjectCreationHandling.;
             setting.TypeNameHandling = TypeNameHandling.Auto;
@@ -50,7 +49,12 @@ namespace UiEditor
             Console.Write(json);
 
             //JsonConvert.DeserializeObject(json, typeof(CCNode));
-            CCNode node2 = JsonConvert.DeserializeObject<CCNode>(json, setting);
+            CCNode node2 = JsonConvert.DeserializeObject<CCNode>(json, setting);*/
+
+            string json = node.ToJson();
+            Console.Write(json);
+
+            CCNode node3 = CCNode.FromJson<CCNode>(json);
             
 
             /*DataContractJsonSerializer json = new DataContractJsonSerializer(node.GetType(), knowtypes);
@@ -65,11 +69,11 @@ namespace UiEditor
         static void Main()
         {
 
-            Test();
+            //Test();
 
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new UiEditorForm());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new UiEditorForm());
         }
     }
 }

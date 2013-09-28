@@ -520,7 +520,15 @@ To fix this error either change the JSON to a {1} or change the deserialized typ
               {
                 string typeName;
                 string assemblyName;
+
+#if UIEDITOR_SPECIAL
+#warning 忽略Type的命名空间和程序集
+                typeName = "UiEditor.UI." + qualifiedTypeName;
+                assemblyName = "UiEditor";
+#else
                 ReflectionUtils.SplitFullyQualifiedTypeName(qualifiedTypeName, out typeName, out assemblyName);
+#endif
+
 
                 Type specifiedType;
                 try

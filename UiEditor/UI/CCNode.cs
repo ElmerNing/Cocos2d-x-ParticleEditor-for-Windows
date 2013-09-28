@@ -15,5 +15,14 @@ namespace UiEditor.UI
         public bool visible = true;
         public int zOrder = 0;
         public Dictionary<string, CCNode> children = null;
+
+        public void addChild(string name, CCNode node)
+        {
+            if (children == null)
+            {
+                children = new Dictionary<string, CCNode>();
+            }
+            children.Add(name, node);
+        }
     }
 }
