@@ -56,6 +56,7 @@ namespace UiEditor
         private void OnAfterSelect(object sender, TreeViewEventArgs e)
         {
             CCTreeNode node = (CCTreeNode)e.Node;
+            mPropertyWidget.InitWithCCNode(node.CCNode);
             
         }
     }

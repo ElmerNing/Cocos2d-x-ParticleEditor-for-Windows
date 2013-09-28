@@ -69,7 +69,7 @@ namespace UiEditor
         static void Main()
         {
 
-            //Test();
+            Test();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

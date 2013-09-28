@@ -31,7 +31,7 @@
             this.mNodesTree = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.propertyWidget1 = new UiEditor.PropertyWidget();
+            this.mPropertyWidget = new UiEditor.mPropertyWidget();
             this.SuspendLayout();
             // 
             // mNodesTree
@@ -60,18 +60,18 @@
             this.button2.Text = "打开";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // propertyWidget1
+            // mPropertyWidget
             // 
-            this.propertyWidget1.Location = new System.Drawing.Point(194, 64);
-            this.propertyWidget1.Name = "propertyWidget1";
-            this.propertyWidget1.Size = new System.Drawing.Size(526, 874);
-            this.propertyWidget1.TabIndex = 3;
+            this.mPropertyWidget.Location = new System.Drawing.Point(194, 64);
+            this.mPropertyWidget.Name = "mPropertyWidget";
+            this.mPropertyWidget.Size = new System.Drawing.Size(526, 874);
+            this.mPropertyWidget.TabIndex = 3;
             // 
             // UiDesignWidget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.propertyWidget1);
+            this.Controls.Add(this.mPropertyWidget);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mNodesTree);
@@ -86,6 +86,6 @@
         private System.Windows.Forms.TreeView mNodesTree;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private PropertyWidget propertyWidget1;
+        private mPropertyWidget mPropertyWidget;
     }
 }
