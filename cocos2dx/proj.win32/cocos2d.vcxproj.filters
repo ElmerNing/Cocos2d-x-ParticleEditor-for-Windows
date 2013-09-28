@@ -100,6 +100,9 @@
     <Filter Include="support\user_default">
       <UniqueIdentifier>{c45b97e8-fa1f-4e58-8ec5-d46371c2dd26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="lib_json">
+      <UniqueIdentifier>{eebb32c9-ec5c-4872-8cdb-179fc21b52d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\base_nodes\CCAtlasNode.cpp">
@@ -462,6 +465,15 @@
     <ClCompile Include="..\ExportAPI.cpp" />
     <ClCompile Include="..\HelloWorldScene.cpp" />
     <ClCompile Include="..\AppDelegate.cpp" />
+    <ClCompile Include="..\lib_json\json_reader.cpp">
+      <Filter>lib_json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib_json\json_value.cpp">
+      <Filter>lib_json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib_json\json_writer.cpp">
+      <Filter>lib_json</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base_nodes\CCAtlasNode.h">
@@ -922,5 +934,19 @@
     <ClInclude Include="..\HelloWorldScene.h" />
     <ClInclude Include="..\AppDelegate.h" />
     <ClInclude Include="..\AppMacros.h" />
+    <ClInclude Include="..\lib_json\json_batchallocator.h">
+      <Filter>lib_json</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\lib_json\json_internalarray.inl">
+      <Filter>lib_json</Filter>
+    </None>
+    <None Include="..\lib_json\json_internalmap.inl">
+      <Filter>lib_json</Filter>
+    </None>
+    <None Include="..\lib_json\json_valueiterator.inl">
+      <Filter>lib_json</Filter>
+    </None>
   </ItemGroup>
 </Project>

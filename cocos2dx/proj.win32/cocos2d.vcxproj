@@ -180,6 +180,9 @@ xcopy /Y /Q "$(ProjectDir)..\platform\third_party\win32\libraries\*.*" "$(OutDir
     <ClCompile Include="..\layers_scenes_transitions_nodes\CCTransition.cpp" />
     <ClCompile Include="..\layers_scenes_transitions_nodes\CCTransitionPageTurn.cpp" />
     <ClCompile Include="..\layers_scenes_transitions_nodes\CCTransitionProgress.cpp" />
+    <ClCompile Include="..\lib_json\json_reader.cpp" />
+    <ClCompile Include="..\lib_json\json_value.cpp" />
+    <ClCompile Include="..\lib_json\json_writer.cpp" />
     <ClCompile Include="..\menu_nodes\CCMenu.cpp" />
     <ClCompile Include="..\menu_nodes\CCMenuItem.cpp" />
     <ClCompile Include="..\misc_nodes\CCClippingNode.cpp" />
@@ -315,6 +318,7 @@ xcopy /Y /Q "$(ProjectDir)..\platform\third_party\win32\libraries\*.*" "$(OutDir
     <ClInclude Include="..\layers_scenes_transitions_nodes\CCTransition.h" />
     <ClInclude Include="..\layers_scenes_transitions_nodes\CCTransitionPageTurn.h" />
     <ClInclude Include="..\layers_scenes_transitions_nodes\CCTransitionProgress.h" />
+    <ClInclude Include="..\lib_json\json_batchallocator.h" />
     <ClInclude Include="..\menu_nodes\CCMenu.h" />
     <ClInclude Include="..\menu_nodes\CCMenuItem.h" />
     <ClInclude Include="..\misc_nodes\CCClippingNode.h" />
@@ -425,6 +429,11 @@ xcopy /Y /Q "$(ProjectDir)..\platform\third_party\win32\libraries\*.*" "$(OutDir
     <ClInclude Include="..\CCConfiguration.h" />
     <ClInclude Include="..\CCDirector.h" />
     <ClInclude Include="..\CCScheduler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\lib_json\json_internalarray.inl" />
+    <None Include="..\lib_json\json_internalmap.inl" />
+    <None Include="..\lib_json\json_valueiterator.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

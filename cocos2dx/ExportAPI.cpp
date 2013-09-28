@@ -18,7 +18,7 @@ extern "C"
 
 		CCEGLView* eglView = CCEGLView::sharedOpenGLView();
 		eglView->setViewName("HelloCpp");
-		eglView->setFrameSize(1024, 768);
+		eglView->setFrameSize(960, 640);
 		// The resolution of ipad3 is very large. In general, PC's resolution is smaller than it.
 		// So we need to invoke 'setFrameZoomFactor'(only valid on desktop(win32, mac, linux)) to make the window smaller.
 		eglView->setFrameZoomFactor(1.f);
@@ -46,6 +46,17 @@ extern "C"
 		return true;
 	}
 
+	MEDUSA_EXPORT_API bool MAddSpriteFramesWithFile(char* path)
+	{
+		CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile(path);
+		return true;
+	}
+
+	MEDUSA_EXPORT_API bool MRemoveSpriteFrames()
+	{
+		CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFrames();
+		return true;
+	}
 
 	MEDUSA_EXPORT_API bool MParticleChanged(float scale,bool isBackgroundMove,float angle,float angleVar,int destBlendFunc,int srcBlendFunc,float duration,float emissionRate,int emiiterMode,
 		GLbyte endColorR,GLbyte endColorG,GLbyte endColorB,GLbyte endColorA,
