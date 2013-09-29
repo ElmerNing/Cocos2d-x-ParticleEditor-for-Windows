@@ -56,8 +56,11 @@ namespace UiEditor
         private void OnAfterSelect(object sender, TreeViewEventArgs e)
         {
             CCTreeNode node = (CCTreeNode)e.Node;
-            mPropertyWidget.InitWithCCNode(node.CCNode);
-            
+            //mPropertyWidget.InitWithCCNode(node.CCNode);
+            AppSettings a = new AppSettings();
+            mPropertyGrid.SelectedObject = node.CCNode;
+
+
         }
     }
 
@@ -69,5 +72,61 @@ namespace UiEditor
             this.CCNode = node;
         }
         public CCNode CCNode;
+    }
+
+    [DefaultPropertyAttribute("SaveOnClose")]
+    public class AppSettings
+    {
+        private bool saveOnClose = true;
+        private string greetingText = "欢迎使用应用程序！";
+        private int maxRepeatRate = 10;
+        private int itemsInMRU = 4;
+        private bool settingsChanged = false;
+        private string appVersion = "1.0";
+        [CategoryAttribute("文档设置"),
+        DefaultValueAttribute(true)]
+        public bool SaveOnClose
+        {
+            get { return saveOnClose; }
+            set { saveOnClose = value; }
+        }
+        [CategoryAttribute("全局设置"),
+        ReadOnlyAttribute(true),
+        DefaultValueAttribute("欢迎使用应用程序！")]
+        public string GreetingText
+        {
+            get { return greetingText; }
+            set { greetingText = value; }
+        }
+        [CategoryAttribute("全局设置"),
+        DefaultValueAttribute(4)]
+        public int ItemsInMRUList
+        {
+            get { return itemsInMRU; }
+            set { itemsInMRU = value; }
+        }
+        [DescriptionAttribute("以毫秒表示的文本重复率。"),
+        CategoryAttribute("全局设置"),
+        DefaultValueAttribute(10)]
+        public int MaxRepeatRate
+        {
+            get { return maxRepeatRate; }
+            set { maxRepeatRate = value; }
+        }
+        [BrowsableAttribute(false),
+        DefaultValueAttribute(false)]
+        public bool SettingsChanged
+        {
+            get { return settingsChanged; }
+            set { settingsChanged = value; }
+        }
+        [CategoryAttribute("版本"),
+        DefaultValueAttribute("1.0"),
+        ReadOnlyAttribute(true)]
+        public string AppVersion
+        {
+            get { return appVersion; }
+            set { appVersion = value; }
+        }
     }
 }
