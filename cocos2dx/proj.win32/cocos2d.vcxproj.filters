@@ -103,6 +103,9 @@
     <Filter Include="lib_json">
       <UniqueIdentifier>{eebb32c9-ec5c-4872-8cdb-179fc21b52d9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CCLayoutNode">
+      <UniqueIdentifier>{b63f6ce0-9238-4404-8adf-738c067f5401}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\base_nodes\CCAtlasNode.cpp">
@@ -473,6 +476,12 @@
     </ClCompile>
     <ClCompile Include="..\lib_json\json_writer.cpp">
       <Filter>lib_json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CCLayoutNode\CCLayoutNode.cpp">
+      <Filter>CCLayoutNode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CCLayoutNode\CCLayoutNodeHelper.cpp">
+      <Filter>CCLayoutNode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -936,6 +945,12 @@
     <ClInclude Include="..\AppMacros.h" />
     <ClInclude Include="..\lib_json\json_batchallocator.h">
       <Filter>lib_json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CCLayoutNode\CCLayoutNode.h">
+      <Filter>CCLayoutNode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CCLayoutNode\CCLayoutNodeHelper.h">
+      <Filter>CCLayoutNode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

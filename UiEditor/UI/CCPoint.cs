@@ -6,20 +6,30 @@ using System.ComponentModel;
 
 namespace UiEditor.UI
 {
-    [DefaultPropertyAttribute("SaveOnClose")]  
-    public class CCPoint : CCObject
+    public class CCPoint : CCProperty
     {
         public float x;
-        public float X
-        {
-            get { return x; }
-            set { x = value; }
-        }
         public float y;
-        public float Y
+
+        public override string ToString()
         {
-            get { return y; }
-            set { y = value; }
+            return string.Join(",", x, y);
+        }
+
+        static public CCPoint Parse(string str)
+        {
+            try
+            {
+                string[] rgb = str.Split(',', ':', '-', '.');
+                CCPoint clr = new CCPoint();
+                clr.x = float.Parse(rgb[0]);
+                clr.y = float.Parse(rgb[1]);
+                return clr;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

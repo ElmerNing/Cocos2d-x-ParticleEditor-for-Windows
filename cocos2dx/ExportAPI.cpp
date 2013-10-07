@@ -4,13 +4,15 @@
 #include "cocos2d.h"
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "lib_json/json/json.h"
+#include "CCLayoutNode/CCLayoutNode.h"
 
 extern "C"
 {
 	MEDUSA_EXPORT_API bool MInitializeApplication( HWND hwnd )
 	{
 
-		cocos2d::CCEGLView::SetParentHwnd(hwnd);
+ 		cocos2d::CCEGLView::SetParentHwnd(hwnd);
 
 		// create the application instance
 		AppDelegate app;
@@ -18,7 +20,7 @@ extern "C"
 
 		CCEGLView* eglView = CCEGLView::sharedOpenGLView();
 		eglView->setViewName("HelloCpp");
-		eglView->setFrameSize(960, 640);
+		eglView->setFrameSize(640, 960);
 		// The resolution of ipad3 is very large. In general, PC's resolution is smaller than it.
 		// So we need to invoke 'setFrameZoomFactor'(only valid on desktop(win32, mac, linux)) to make the window smaller.
 		eglView->setFrameZoomFactor(1.f);
@@ -39,7 +41,6 @@ extern "C"
 		return true;
 	}
 
-
 	MEDUSA_EXPORT_API bool MGameLoop( float interval )
 	{
 		cocos2d::CCDirector::sharedDirector()->mainLoop();
@@ -55,6 +56,17 @@ extern "C"
 	MEDUSA_EXPORT_API bool MRemoveSpriteFrames()
 	{
 		CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFrames();
+		return true;
+	}
+
+	MEDUSA_EXPORT_API bool MUiChanged(char* json)
+	{
+		Json::Value root;
+		Json::Reader reader;
+		reader.parse(json, root, false);
+
+		HelloWorld::ChangeUi( CCLayoutNode::create(root) );
+
 		return true;
 	}
 

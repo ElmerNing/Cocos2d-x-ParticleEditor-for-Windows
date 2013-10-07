@@ -10,16 +10,11 @@ namespace UiEditor.UI
     [DefaultPropertyAttribute("SaveOnClose")]
     public class CCNode : CCObject
     {
-        public CCPoint postion = null;
-        public CCPoint Postion
-        {
-            get { return postion; }
-            set { postion = value; }
-        }
+        public CCPoint position = null;
         public CCPoint anchorPoint = null;
         public CCPoint scale = null;
-        public CCPoint rotation = null;
-
+        public CCSize containSize = null;
+        public float rotation = 0;
         public bool visible = true;
         public int zOrder = 0;
         public Dictionary<string, CCNode> children = null;

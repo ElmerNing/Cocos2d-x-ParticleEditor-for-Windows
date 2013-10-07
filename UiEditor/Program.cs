@@ -22,7 +22,7 @@ namespace UiEditor
         static void Test()
         {
             CCNode node = new CCNode();
-            node.postion = new CCPoint();
+            node.position = new CCPoint();
 
             CCNodeRGBA node1 = new CCNodeRGBA();
             node1.opacity = 1;

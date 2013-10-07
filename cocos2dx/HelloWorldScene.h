@@ -43,9 +43,12 @@ public:
 		unsigned int totalParticles
 		);
 
+	static void ChangeUi(CCNode* node);
+
 	static CCParticleSystem* mEmiiter;
 	static CCSprite* mBackground;
 	static bool mIsBackgroundMove;
+	static CCNode* mUiNode;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

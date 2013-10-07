@@ -36,7 +36,7 @@
             // 
             // mPreviewPanel
             // 
-            this.mPreviewPanel.Location = new System.Drawing.Point(676, 12);
+            this.mPreviewPanel.Location = new System.Drawing.Point(673, 25);
             this.mPreviewPanel.Name = "mPreviewPanel";
             this.mPreviewPanel.Size = new System.Drawing.Size(640, 960);
             this.mPreviewPanel.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1328, 1054);
+            this.ClientSize = new System.Drawing.Size(1028, 750);
             this.Controls.Add(this.mDesignWidget);
             this.Controls.Add(this.mPreviewPanel);
             this.Name = "UiEditorForm";

@@ -37,24 +37,31 @@ bool HelloWorld::init()
 	mBackground->setPosition(ccp(size.width/2,size.height/2));
 
 	this->addChild(mBackground,1,1);
-	CCActionInterval* move1 = CCMoveBy::create(4, CCPointMake(100,0) );
-	CCActionInterval* move2 = CCMoveBy::create(4, CCPointMake(0,100) );
-	CCActionInterval* move3 = CCMoveBy::create(4, CCPointMake(-100,0) );
-	CCActionInterval* move4 = CCMoveBy::create(4, CCPointMake(0,-100) );
 
-	CCFiniteTimeAction* seq = CCSequence::create(move1, move2, move3,move4,NULL);
-	mBackground->runAction( CCRepeatForever::create((CCActionInterval*)seq) );
+	mUiNode = CCNode::create();
+	mUiNode->setContentSize(size);
+	mUiNode->setAnchorPoint(ccp(0.5f,0.5f));
+	mUiNode->setPosition(ccp(size.width/2,size.height/2));
+	this->addChild(mUiNode,2,2);
 
-	mEmiiter=new CCParticleSun();
-
-	mEmiiter->initWithTotalParticles(350);
-	mEmiiter->setTexture(CCTextureCache::sharedTextureCache()->addImage("fire.png"));
-	
-	CCSize s = CCDirector::sharedDirector()->getWinSize();
-	
-	mBackground->addChild(mEmiiter,1);
-	mEmiiter->setPosition(ccp(size.width/2,size.height/2));
-	mIsBackgroundMove=true;
+// 	CCActionInterval* move1 = CCMoveBy::create(4, CCPointMake(100,0) );
+// 	CCActionInterval* move2 = CCMoveBy::create(4, CCPointMake(0,100) );
+// 	CCActionInterval* move3 = CCMoveBy::create(4, CCPointMake(-100,0) );
+// 	CCActionInterval* move4 = CCMoveBy::create(4, CCPointMake(0,-100) );
+// 
+// 	CCFiniteTimeAction* seq = CCSequence::create(move1, move2, move3,move4,NULL);
+// 	mBackground->runAction( CCRepeatForever::create((CCActionInterval*)seq) );
+// 
+// 	mEmiiter=new CCParticleSun();
+// 
+// 	mEmiiter->initWithTotalParticles(350);
+// 	mEmiiter->setTexture(CCTextureCache::sharedTextureCache()->addImage("fire.png"));
+// 	
+// 	CCSize s = CCDirector::sharedDirector()->getWinSize();
+// 	
+// 	mBackground->addChild(mEmiiter,1);
+// 	mEmiiter->setPosition(ccp(size.width/2,size.height/2));
+// 	mIsBackgroundMove=true;
 	return true;
 }
 
@@ -263,8 +270,29 @@ void HelloWorld::ChangeParticle(float scale,bool isBackgroundMove,float angle,fl
 	mEmiiter->resetSystem();
 }
 
+void HelloWorld::ChangeUi( CCNode* node )
+{
+	mUiNode->removeAllChildren();
+
+	if (node)
+	{
+		mUiNode->addChild(node,2,1);
+	}else
+	{
+		CCSprite* sprite = CCSprite::createWithSpriteFrameName("s_crusade_update_tile.png");
+		//CCSprite* sprite = CCSprite::create("123.png");
+		sprite->setPosition(ccp(0,900));
+		sprite->setAnchorPoint(ccp(0.5,0.5));
+		CCNode* node = CCNode::create();
+		//node->addChild(sprite);
+		mUiNode->addChild(sprite);
+	}
+}
+
 bool HelloWorld::mIsBackgroundMove;
 
 CCSprite* HelloWorld::mBackground;
 
 CCParticleSystem* HelloWorld::mEmiiter;
+
+CCNode* HelloWorld::mUiNode;

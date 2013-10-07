@@ -7,15 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using UiEditor.UI;
+using System.Reflection;
+using System.IO;
 
 namespace UiEditor
 {
     public partial class UiDesignWidget : UserControl
     {
+        CCNode mBaseNode = null;
+
         public UiDesignWidget()
         {
             InitializeComponent();
-            CCNode node = new CCNode();
+            /*CCNode node = new CCNode();
             node.postion = new CCPoint();
 
             CCNodeRGBA node1 = new CCNodeRGBA();
@@ -28,15 +32,15 @@ namespace UiEditor
 
             node.addChild("123", node1);
 
-            InitWithCCNode(node);
+            InitWithCCNode(node);*/
         }
         
         private void InitWithCCNode(CCNode node)
         {
-            mNodesTree.Nodes.Clear();
-            
+            Reset();
+            mBaseNode = node;
             mNodesTree.Nodes.Add(CreateTreeNode("base", node));
-
+            mNodesTree.SelectedNode = mNodesTree.Nodes[0];
             mNodesTree.ExpandAll();
         }
 
@@ -56,12 +60,121 @@ namespace UiEditor
         private void OnAfterSelect(object sender, TreeViewEventArgs e)
         {
             CCTreeNode node = (CCTreeNode)e.Node;
-            //mPropertyWidget.InitWithCCNode(node.CCNode);
-            AppSettings a = new AppSettings();
-            mPropertyGrid.SelectedObject = node.CCNode;
+            mPropertyWidget.InitWithCCNode(node.CCNode);
+        }
 
+        private void OnNewBtnClick(object sender, EventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = " 布局文件(*.layout)|*.layout";
+            DialogResult result = dlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                mSavePathLabel.Text = dlg.FileName;
+            }
+        }
+
+        private void OnOpenBtnClick(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = " 布局文件(*.layout)|*.layout";
+            DialogResult result = dlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                mSavePathLabel.Text = dlg.FileName;
+                StreamReader sr = new StreamReader(dlg.FileName, Encoding.UTF8);
+                CCNode node = CCObject.FromJson<CCNode>(sr.ReadToEnd());
+                InitWithCCNode(node);
+                sr.Close();
+            }
+        }
+
+        private void OnSaveBtnClick(object sender, EventArgs e)
+        {
+            if (mSavePathLabel.Text == "")
+            {
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Filter = " 布局文件(*.layout)|*.layout";
+                DialogResult result = dlg.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    mSavePathLabel.Text = dlg.FileName;
+                }
+            }
+
+            StreamWriter sw = new StreamWriter(mSavePathLabel.Text, false, Encoding.UTF8);
+            sw.Write(mBaseNode.ToJson());
+            sw.Close();
+        }
+
+        private void OnInsertClick(object sender, ToolStripItemClickedEventArgs e)
+        {
+            Assembly asb = Assembly.GetExecutingAssembly();
+            Type insertype = asb.GetType("UiEditor.UI." + e.ClickedItem.Text, false, true);
+            if (insertype == null)
+                return;
+
+            SaveFileDialog dlg = new SaveFileDialog();
+            DialogResult re = dlg.ShowDialog();
+            if (re == DialogResult.OK)
+            {
+                string name = Path.GetFileName(dlg.FileName);
+                ConstructorInfo construct = insertype.GetConstructor(new Type[] { });
+                CCNode node = (CCNode)construct.Invoke(null);
+                if (mNodesTree.SelectedNode == null)
+                {
+                    InitWithCCNode(node);
+                }
+                else
+                {
+                    CCTreeNode tnode = CreateTreeNode(name, node);
+                    ((CCTreeNode)mNodesTree.SelectedNode).CCNode.addChild(name, node);
+                    mNodesTree.SelectedNode.Nodes.Add(tnode);
+                    mNodesTree.SelectedNode = tnode;
+                }
+            }
+        }
+
+        private void OnDeleteClick(object sender, EventArgs e)
+        {
+            if (mNodesTree.SelectedNode == null)
+                return;
+
+            CCTreeNode parentnode = (CCTreeNode)mNodesTree.SelectedNode.Parent;
+            if (parentnode == null)
+            {
+                Reset();
+            }
+            else
+            {
+                parentnode.CCNode.children.Remove(mNodesTree.SelectedNode.Text);
+                InitWithCCNode(mBaseNode);
+            }
 
         }
+
+        private void OnFreshClick(object sender, EventArgs e)
+        {
+            if (mBaseNode != null)
+            {
+                string json = mBaseNode.ToJson();
+
+                Cocos2dDllImporter.shared().Invoke<Cocos2dDllImporter.MUiChanged, bool>(new StringBuilder(json));
+            }
+            else
+            {
+                Cocos2dDllImporter.shared().Invoke<Cocos2dDllImporter.MUiChanged, bool>(new StringBuilder(""));
+            }
+        }
+
+        public void Reset()
+        {
+            mNodesTree.Nodes.Clear();
+            mPropertyWidget.Controls.Clear();
+            mBaseNode = null;
+        }
+
+
     }
 
     class CCTreeNode : TreeNode
@@ -72,61 +185,5 @@ namespace UiEditor
             this.CCNode = node;
         }
         public CCNode CCNode;
-    }
-
-    [DefaultPropertyAttribute("SaveOnClose")]
-    public class AppSettings
-    {
-        private bool saveOnClose = true;
-        private string greetingText = "欢迎使用应用程序！";
-        private int maxRepeatRate = 10;
-        private int itemsInMRU = 4;
-        private bool settingsChanged = false;
-        private string appVersion = "1.0";
-        [CategoryAttribute("文档设置"),
-        DefaultValueAttribute(true)]
-        public bool SaveOnClose
-        {
-            get { return saveOnClose; }
-            set { saveOnClose = value; }
-        }
-        [CategoryAttribute("全局设置"),
-        ReadOnlyAttribute(true),
-        DefaultValueAttribute("欢迎使用应用程序！")]
-        public string GreetingText
-        {
-            get { return greetingText; }
-            set { greetingText = value; }
-        }
-        [CategoryAttribute("全局设置"),
-        DefaultValueAttribute(4)]
-        public int ItemsInMRUList
-        {
-            get { return itemsInMRU; }
-            set { itemsInMRU = value; }
-        }
-        [DescriptionAttribute("以毫秒表示的文本重复率。"),
-        CategoryAttribute("全局设置"),
-        DefaultValueAttribute(10)]
-        public int MaxRepeatRate
-        {
-            get { return maxRepeatRate; }
-            set { maxRepeatRate = value; }
-        }
-        [BrowsableAttribute(false),
-        DefaultValueAttribute(false)]
-        public bool SettingsChanged
-        {
-            get { return settingsChanged; }
-            set { settingsChanged = value; }
-        }
-        [CategoryAttribute("版本"),
-        DefaultValueAttribute("1.0"),
-        ReadOnlyAttribute(true)]
-        public string AppVersion
-        {
-            get { return appVersion; }
-            set { appVersion = value; }
-        }
     }
 }

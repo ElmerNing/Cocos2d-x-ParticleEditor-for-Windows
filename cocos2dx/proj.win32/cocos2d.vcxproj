@@ -142,6 +142,8 @@ xcopy /Y /Q "$(ProjectDir)..\platform\third_party\win32\libraries\*.*" "$(OutDir
     <ClCompile Include="..\AppDelegate.cpp" />
     <ClCompile Include="..\base_nodes\CCAtlasNode.cpp" />
     <ClCompile Include="..\base_nodes\CCNode.cpp" />
+    <ClCompile Include="..\CCLayoutNode\CCLayoutNode.cpp" />
+    <ClCompile Include="..\CCLayoutNode\CCLayoutNodeHelper.cpp" />
     <ClCompile Include="..\cocoa\CCAffineTransform.cpp" />
     <ClCompile Include="..\cocoa\CCArray.cpp" />
     <ClCompile Include="..\cocoa\CCAutoreleasePool.cpp" />
@@ -274,6 +276,8 @@ xcopy /Y /Q "$(ProjectDir)..\platform\third_party\win32\libraries\*.*" "$(OutDir
     <ClInclude Include="..\AppMacros.h" />
     <ClInclude Include="..\base_nodes\CCAtlasNode.h" />
     <ClInclude Include="..\base_nodes\CCNode.h" />
+    <ClInclude Include="..\CCLayoutNode\CCLayoutNode.h" />
+    <ClInclude Include="..\CCLayoutNode\CCLayoutNodeHelper.h" />
     <ClInclude Include="..\cocoa\CCAffineTransform.h" />
     <ClInclude Include="..\cocoa\CCArray.h" />
     <ClInclude Include="..\cocoa\CCAutoreleasePool.h" />

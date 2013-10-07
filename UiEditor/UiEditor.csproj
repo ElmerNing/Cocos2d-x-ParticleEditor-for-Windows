@@ -63,11 +63,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UiPropertyGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UiPropertyGrid.Designer.cs">
+      <DependentUpon>UiPropertyGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UiPropertyWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UiPropertyWidget.Designer.cs">
+      <DependentUpon>UiPropertyWidget.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CCColor3B.cs" />
     <Compile Include="UI\CCNode.cs" />
     <Compile Include="UI\CCNodeRGBA.cs" />
     <Compile Include="UI\CCObject.cs" />
     <Compile Include="UI\CCPoint.cs" />
+    <Compile Include="UI\CCProperty.cs" />
     <Compile Include="UI\CCSize.cs" />
     <Compile Include="UI\CCSprite.cs" />
     <EmbeddedResource Include="UiDesignWidget.resx">
@@ -85,6 +98,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UiPropertyGrid.resx">
+      <DependentUpon>UiPropertyGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UiPropertyWidget.resx">
+      <DependentUpon>UiPropertyWidget.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

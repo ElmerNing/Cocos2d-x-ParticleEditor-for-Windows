@@ -37,7 +37,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // this can make sure that the resource's height could fit for the height of design resolution.
 
     // if the frame's height is larger than the height of medium resource size, select large resource.
-	if (frameSize.height > mediumResource.size.height)
+	/*if (frameSize.height > mediumResource.size.height)
 	{
         searchPath.push_back(largeResource.directory);
 
@@ -56,7 +56,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
         searchPath.push_back(smallResource.directory);
 
         pDirector->setContentScaleFactor(MIN(smallResource.size.height/designResolutionSize.height, smallResource.size.width/designResolutionSize.width));
-    }
+    }*/
+
+	pDirector->setContentScaleFactor(1);
     
     // set searching path
     CCFileUtils::sharedFileUtils()->setSearchPaths(searchPath);
