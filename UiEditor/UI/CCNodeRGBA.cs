@@ -9,8 +9,8 @@ namespace UiEditor.UI
     {
         public CCColor3B color = null;
 
-        public bool cascadeOpacityEnabled = false;
-        public bool cascadeColorEnabled = false;
+        //public bool cascadeOpacityEnabled = false;
+        //public bool cascadeColorEnabled = false;
         public byte opacity = 255;
     }
 }

@@ -21,6 +21,9 @@ namespace UiEditor
 
         static void Test()
         {
+            Type type = typeof(CCMenuItemSprite);
+            ConstructorInfo info = type.GetConstructor(new Type[] { });
+
             CCNode node = new CCNode();
             node.position = new CCPoint();
 

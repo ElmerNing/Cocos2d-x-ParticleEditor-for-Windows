@@ -21,7 +21,6 @@ namespace UiEditor
         private void OnFormLoad(object sender, EventArgs e)
         {
             mDll.Invoke<Cocos2dDllImporter.MInitializeApplication, bool>(mPreviewPanel.Handle.ToInt32());
-            //mDll.Invoke(Cocos2dDllImporter.MAddSpriteFramesWithFile, bool)();
             LoadSpriteFrames();
         }
 
@@ -32,35 +31,15 @@ namespace UiEditor
 
         private void LoadSpriteFrames()
         {
-            DirectoryInfo dir = new DirectoryInfo(@"E:\Lab\Cocos2d-x-ParticleEditor-for-Windows\Debug.win32\scene");
-            foreach (string path in getAllFiles(@"E:\Lab\Cocos2d-x-ParticleEditor-for-Windows\Debug.win32\scene"))
+            mDll.Invoke<Cocos2dDllImporter.MAddSearchPath, bool>(new StringBuilder(GlobalConfig.ResourceDir));
+            foreach (string dir in GlobalConfig.TexturePlistDirs)
             {
-                
-                mDll.Invoke<Cocos2dDllImporter.MAddSpriteFramesWithFile, bool>(new StringBuilder(path));
-                
-            }
-        }
-
-        private List<string> getAllFiles(string path)
-        {
-            List<string> list = new List<string>();
-            DirectoryInfo dir = new DirectoryInfo(path);
-            foreach (FileInfo info in dir.GetFiles())
-            {
-                if (info.Extension == ".plist")
+                List<String> paths = DirUtil.getAllFiles(dir, ".plist");
+                foreach (string path in paths)
                 {
-                    string fulname = info.FullName;
-
-                    list.Add(fulname.Replace(@"\", @"/"));
+                    mDll.Invoke<Cocos2dDllImporter.MAddSpriteFramesWithFile, bool>(new StringBuilder(path));
                 }
-            }
-
-            foreach (DirectoryInfo info in dir.GetDirectories())
-            {
-                list.AddRange(getAllFiles(info.FullName));
-            }
-
-            return list;
+            }            
         }
     }
 }

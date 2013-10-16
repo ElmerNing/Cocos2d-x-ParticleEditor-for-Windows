@@ -19,20 +19,6 @@ namespace UiEditor
         public UiDesignWidget()
         {
             InitializeComponent();
-            /*CCNode node = new CCNode();
-            node.postion = new CCPoint();
-
-            CCNodeRGBA node1 = new CCNodeRGBA();
-            node1.opacity = 1;
-
-            CCNode node3 = new CCNode();
-            node3.postion = new CCPoint();
-
-            node1.addChild("312", node3);
-
-            node.addChild("123", node1);
-
-            InitWithCCNode(node);*/
         }
         
         private void InitWithCCNode(CCNode node)
@@ -66,6 +52,7 @@ namespace UiEditor
         private void OnNewBtnClick(object sender, EventArgs e)
         {
             SaveFileDialog dlg = new SaveFileDialog();
+            dlg.InitialDirectory = GlobalConfig.LayoutFileDir;
             dlg.Filter = " 布局文件(*.layout)|*.layout";
             DialogResult result = dlg.ShowDialog();
             if (result == DialogResult.OK)
@@ -77,6 +64,7 @@ namespace UiEditor
         private void OnOpenBtnClick(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = GlobalConfig.LayoutFileDir;
             dlg.Filter = " 布局文件(*.layout)|*.layout";
             DialogResult result = dlg.ShowDialog();
             if (result == DialogResult.OK)
@@ -94,6 +82,7 @@ namespace UiEditor
             if (mSavePathLabel.Text == "")
             {
                 SaveFileDialog dlg = new SaveFileDialog();
+                dlg.FileName = mSavePathLabel.Text;
                 dlg.Filter = " 布局文件(*.layout)|*.layout";
                 DialogResult result = dlg.ShowDialog();
                 if (result == DialogResult.OK)
@@ -101,10 +90,12 @@ namespace UiEditor
                     mSavePathLabel.Text = dlg.FileName;
                 }
             }
-
-            StreamWriter sw = new StreamWriter(mSavePathLabel.Text, false, Encoding.UTF8);
-            sw.Write(mBaseNode.ToJson());
-            sw.Close();
+            if (mBaseNode != null)
+            {
+                StreamWriter sw = new StreamWriter(mSavePathLabel.Text, false, Encoding.UTF8);
+                sw.Write(mBaseNode.ToJson());
+                sw.Close();
+            }
         }
 
         private void OnInsertClick(object sender, ToolStripItemClickedEventArgs e)
@@ -135,6 +126,27 @@ namespace UiEditor
             }
         }
 
+        private void OnChangeItemClick(object sender, ToolStripItemClickedEventArgs e)
+        {
+            Assembly asb = Assembly.GetExecutingAssembly();
+            Type insertype = asb.GetType("UiEditor.UI." + e.ClickedItem.Text, false, true);
+            if (insertype == null)
+                return;
+            if (mNodesTree.SelectedNode == null)
+                return;
+
+            CCTreeNode tSelNode = (CCTreeNode)mNodesTree.SelectedNode;
+            CCTreeNode tParentNode = (CCTreeNode)tSelNode.Parent;
+            if (tParentNode == null)
+                return;
+
+            string name = tSelNode.Text;
+            ConstructorInfo construct = insertype.GetConstructor(new Type[] { });
+            CCNode node = (CCNode)construct.Invoke(null);           
+            tParentNode.CCNode.children[name] = node;
+            InitWithCCNode(mBaseNode);
+        }
+
         private void OnDeleteClick(object sender, EventArgs e)
         {
             if (mNodesTree.SelectedNode == null)
@@ -150,7 +162,28 @@ namespace UiEditor
                 parentnode.CCNode.children.Remove(mNodesTree.SelectedNode.Text);
                 InitWithCCNode(mBaseNode);
             }
+        }
 
+        private void OnRenameClick(object sender, EventArgs e)
+        {
+            CCTreeNode tSelNode = (CCTreeNode)mNodesTree.SelectedNode;
+            if (tSelNode == null)
+                return;
+
+            CCTreeNode tParentnode = (CCTreeNode)tSelNode.Parent;
+            if (tParentnode == null)
+                return;
+         
+            SaveFileDialog dlg = new SaveFileDialog();
+            DialogResult re = dlg.ShowDialog();
+            if (re == DialogResult.OK)
+            {
+                CCNode node = tParentnode.CCNode.children[tSelNode.Text];
+                string name = Path.GetFileName(dlg.FileName);
+                tParentnode.CCNode.children.Remove(tSelNode.Text);
+                tParentnode.CCNode.children.Add(name, node);
+                InitWithCCNode(mBaseNode);
+            }
         }
 
         private void OnFreshClick(object sender, EventArgs e)
@@ -158,7 +191,6 @@ namespace UiEditor
             if (mBaseNode != null)
             {
                 string json = mBaseNode.ToJson();
-
                 Cocos2dDllImporter.shared().Invoke<Cocos2dDllImporter.MUiChanged, bool>(new StringBuilder(json));
             }
             else
@@ -167,14 +199,25 @@ namespace UiEditor
             }
         }
 
+        private void onExportHppClick(object sender, EventArgs e)
+        {
+            List<String> layoutFiles = DirUtil.getAllFiles(GlobalConfig.LayoutFileDir, ".layout");
+            if (!Directory.Exists(GlobalConfig.ExportHeaderPath))
+                Directory.CreateDirectory(GlobalConfig.ExportHeaderPath);
+            
+            foreach(String file in layoutFiles)
+            {
+                ExportHelper.ExportLayout(file);
+            }
+            
+        }
+
         public void Reset()
         {
             mNodesTree.Nodes.Clear();
             mPropertyWidget.Controls.Clear();
             mBaseNode = null;
         }
-
-
     }
 
     class CCTreeNode : TreeNode

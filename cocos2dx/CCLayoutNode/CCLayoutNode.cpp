@@ -28,8 +28,8 @@ CCLayoutNode* CCLayoutNode::create( const Json::Value& json )
 
 bool CCLayoutNode::init( const Json::Value& json )
 {
-	//mNodesDict->removeAllObjects();
-	//removeAllChildren();
+	mNodesDict->removeAllObjects();
+	removeAllChildren();
 
 	CCLayoutNodeHelper::setCCNode(this, json);
 
@@ -44,17 +44,17 @@ void CCLayoutNode::addChildrenByJson(CCNode* node, const Json::Value& json)
 	for (;it != json.end(); it++)
 	{
 		std::string name = it.memberName();
-		if (!name.empty())
+		if (!name.empty() && name.find("__") == std::string::npos)
 		{
 			CCNode* child = createChild(*it);
 			if (child)
 			{
 				node->addChild(child);
+				mNodesDict->setObject(child, name);
 			}
-			
 		}
 		
-	}	//createChild(it->key());
+	}
 	
 }
 
@@ -66,6 +66,11 @@ CCNode* CCLayoutNode::createChild(const Json::Value& json)
 		addChildrenByJson(node, json["children"]);
 	}
 	return node;
+}
+
+CCNode* CCLayoutNode::getChildByName( const char* name )
+{
+	return dynamic_cast<CCNode*>( mNodesDict->objectForKey(name) );
 }
 
 

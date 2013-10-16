@@ -12,8 +12,10 @@ class CCLayoutNode : public CCNode
 	~CCLayoutNode();
 public:
 	static CCLayoutNode* create(const Json::Value& json);
-	bool init(const Json::Value& json);
+	CCNode* getChildByName(const char* name);
+	
 private:
+	bool init(const Json::Value& json);
 	void addChildrenByJson(CCNode* node, const Json::Value& json);
 	CCNode* createChild(const Json::Value& json);
 };

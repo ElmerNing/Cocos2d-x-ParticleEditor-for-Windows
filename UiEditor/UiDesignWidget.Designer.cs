@@ -34,13 +34,28 @@
             this.cCNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cCNodeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cCSpriteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cCScale9SpriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cCLabelTTFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cCLabelTTFEXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cCMenuItemSpriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cCMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.更改节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cCNodeToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cCMenuItemSpriteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cCMenuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cCSpriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.重命名ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mNewBtn = new System.Windows.Forms.Button();
             this.mSaveBtn = new System.Windows.Forms.Button();
             this.mPropertyWidget = new UiEditor.UiPropertyWidget();
             this.mOpenBtn = new System.Windows.Forms.Button();
             this.mSavePathLabel = new System.Windows.Forms.Label();
             this.mFreshBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.mContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,42 +72,143 @@
             // 
             this.mContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cCNodeToolStripMenuItem,
-            this.cCSpriteToolStripMenuItem});
+            this.更改节点ToolStripMenuItem,
+            this.cCSpriteToolStripMenuItem,
+            this.重命名ToolStripMenuItem});
             this.mContextMenuStrip.Name = "mContextMenuStrip";
-            this.mContextMenuStrip.Size = new System.Drawing.Size(125, 48);
+            this.mContextMenuStrip.Size = new System.Drawing.Size(153, 114);
             // 
             // cCNodeToolStripMenuItem
             // 
             this.cCNodeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cCNodeToolStripMenuItem1,
-            this.cCSpriteToolStripMenuItem1});
+            this.cCSpriteToolStripMenuItem1,
+            this.cCScale9SpriteToolStripMenuItem,
+            this.cCLabelTTFToolStripMenuItem,
+            this.cCLabelTTFEXToolStripMenuItem,
+            this.cCMenuItemSpriteToolStripMenuItem,
+            this.cCMenuToolStripMenuItem});
             this.cCNodeToolStripMenuItem.Name = "cCNodeToolStripMenuItem";
-            this.cCNodeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.cCNodeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cCNodeToolStripMenuItem.Text = "插入节点";
             this.cCNodeToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnInsertClick);
             // 
             // cCNodeToolStripMenuItem1
             // 
             this.cCNodeToolStripMenuItem1.Name = "cCNodeToolStripMenuItem1";
-            this.cCNodeToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.cCNodeToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
             this.cCNodeToolStripMenuItem1.Text = "CCNode";
             // 
             // cCSpriteToolStripMenuItem1
             // 
             this.cCSpriteToolStripMenuItem1.Name = "cCSpriteToolStripMenuItem1";
-            this.cCSpriteToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.cCSpriteToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
             this.cCSpriteToolStripMenuItem1.Text = "CCSprite";
+            // 
+            // cCScale9SpriteToolStripMenuItem
+            // 
+            this.cCScale9SpriteToolStripMenuItem.Name = "cCScale9SpriteToolStripMenuItem";
+            this.cCScale9SpriteToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.cCScale9SpriteToolStripMenuItem.Text = "CCScale9Sprite";
+            // 
+            // cCLabelTTFToolStripMenuItem
+            // 
+            this.cCLabelTTFToolStripMenuItem.Name = "cCLabelTTFToolStripMenuItem";
+            this.cCLabelTTFToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.cCLabelTTFToolStripMenuItem.Text = "CCLabelTTF";
+            // 
+            // cCLabelTTFEXToolStripMenuItem
+            // 
+            this.cCLabelTTFEXToolStripMenuItem.Name = "cCLabelTTFEXToolStripMenuItem";
+            this.cCLabelTTFEXToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.cCLabelTTFEXToolStripMenuItem.Text = "CCLabelTTFEX";
+            // 
+            // cCMenuItemSpriteToolStripMenuItem
+            // 
+            this.cCMenuItemSpriteToolStripMenuItem.Name = "cCMenuItemSpriteToolStripMenuItem";
+            this.cCMenuItemSpriteToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.cCMenuItemSpriteToolStripMenuItem.Text = "CCMenuItemSprite";
+            // 
+            // cCMenuToolStripMenuItem
+            // 
+            this.cCMenuToolStripMenuItem.Name = "cCMenuToolStripMenuItem";
+            this.cCMenuToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.cCMenuToolStripMenuItem.Text = "CCMenu";
+            // 
+            // 更改节点ToolStripMenuItem
+            // 
+            this.更改节点ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cCNodeToolStripMenuItem2,
+            this.cCToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.cCMenuItemSpriteToolStripMenuItem1,
+            this.cCMenuToolStripMenuItem1});
+            this.更改节点ToolStripMenuItem.Name = "更改节点ToolStripMenuItem";
+            this.更改节点ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.更改节点ToolStripMenuItem.Text = "更改节点";
+            this.更改节点ToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnChangeItemClick);
+            // 
+            // cCNodeToolStripMenuItem2
+            // 
+            this.cCNodeToolStripMenuItem2.Name = "cCNodeToolStripMenuItem2";
+            this.cCNodeToolStripMenuItem2.Size = new System.Drawing.Size(185, 22);
+            this.cCNodeToolStripMenuItem2.Text = "CCNode";
+            // 
+            // cCToolStripMenuItem
+            // 
+            this.cCToolStripMenuItem.Name = "cCToolStripMenuItem";
+            this.cCToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.cCToolStripMenuItem.Text = "CCSprite";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
+            this.toolStripMenuItem1.Text = "CCLabelTTF";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(185, 22);
+            this.toolStripMenuItem2.Text = "CCLabelTTFEX";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(185, 22);
+            this.toolStripMenuItem3.Text = "CCScale9Sprite";
+            // 
+            // cCMenuItemSpriteToolStripMenuItem1
+            // 
+            this.cCMenuItemSpriteToolStripMenuItem1.Name = "cCMenuItemSpriteToolStripMenuItem1";
+            this.cCMenuItemSpriteToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
+            this.cCMenuItemSpriteToolStripMenuItem1.Text = "CCMenuItemSprite";
+            // 
+            // cCMenuToolStripMenuItem1
+            // 
+            this.cCMenuToolStripMenuItem1.Name = "cCMenuToolStripMenuItem1";
+            this.cCMenuToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
+            this.cCMenuToolStripMenuItem1.Text = "CCMenu";
             // 
             // cCSpriteToolStripMenuItem
             // 
             this.cCSpriteToolStripMenuItem.Name = "cCSpriteToolStripMenuItem";
-            this.cCSpriteToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.cCSpriteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cCSpriteToolStripMenuItem.Text = "删除节点";
             this.cCSpriteToolStripMenuItem.Click += new System.EventHandler(this.OnDeleteClick);
             // 
+            // 重命名ToolStripMenuItem
+            // 
+            this.重命名ToolStripMenuItem.Name = "重命名ToolStripMenuItem";
+            this.重命名ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.重命名ToolStripMenuItem.Text = "重命名";
+            this.重命名ToolStripMenuItem.Click += new System.EventHandler(this.OnRenameClick);
+            // 
             // mNewBtn
             // 
-            this.mNewBtn.Location = new System.Drawing.Point(253, 36);
+            this.mNewBtn.Location = new System.Drawing.Point(228, 35);
             this.mNewBtn.Name = "mNewBtn";
             this.mNewBtn.Size = new System.Drawing.Size(75, 23);
             this.mNewBtn.TabIndex = 1;
@@ -102,7 +218,7 @@
             // 
             // mSaveBtn
             // 
-            this.mSaveBtn.Location = new System.Drawing.Point(467, 36);
+            this.mSaveBtn.Location = new System.Drawing.Point(430, 36);
             this.mSaveBtn.Name = "mSaveBtn";
             this.mSaveBtn.Size = new System.Drawing.Size(75, 23);
             this.mSaveBtn.TabIndex = 2;
@@ -119,7 +235,7 @@
             // 
             // mOpenBtn
             // 
-            this.mOpenBtn.Location = new System.Drawing.Point(363, 36);
+            this.mOpenBtn.Location = new System.Drawing.Point(330, 36);
             this.mOpenBtn.Name = "mOpenBtn";
             this.mOpenBtn.Size = new System.Drawing.Size(75, 23);
             this.mOpenBtn.TabIndex = 4;
@@ -137,7 +253,7 @@
             // 
             // mFreshBtn
             // 
-            this.mFreshBtn.Location = new System.Drawing.Point(571, 35);
+            this.mFreshBtn.Location = new System.Drawing.Point(534, 35);
             this.mFreshBtn.Name = "mFreshBtn";
             this.mFreshBtn.Size = new System.Drawing.Size(75, 23);
             this.mFreshBtn.TabIndex = 6;
@@ -145,14 +261,25 @@
             this.mFreshBtn.UseVisualStyleBackColor = true;
             this.mFreshBtn.Click += new System.EventHandler(this.OnFreshClick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(630, 35);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "导出头文件";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.onExportHppClick);
+            // 
             // UiDesignWidget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.mFreshBtn);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.mSavePathLabel);
-            this.Controls.Add(this.mOpenBtn);
+            this.Controls.Add(this.mFreshBtn);
             this.Controls.Add(this.mPropertyWidget);
+            this.Controls.Add(this.mOpenBtn);
             this.Controls.Add(this.mNewBtn);
             this.Controls.Add(this.mSaveBtn);
             this.Controls.Add(this.mNodesTree);
@@ -178,5 +305,20 @@
         private System.Windows.Forms.Button mOpenBtn;
         private System.Windows.Forms.Label mSavePathLabel;
         private System.Windows.Forms.Button mFreshBtn;
+        private System.Windows.Forms.ToolStripMenuItem cCScale9SpriteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cCLabelTTFToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cCLabelTTFEXToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 更改节点ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cCNodeToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem cCToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem 重命名ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cCMenuItemSpriteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cCMenuItemSpriteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cCMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cCMenuToolStripMenuItem1;
+        private System.Windows.Forms.Button button1;
     }
 }

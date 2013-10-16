@@ -256,6 +256,10 @@ THE SOFTWARE.
 #include "CCDirector.h"
 #include "CCScheduler.h"
 
+//extensions
+#include "extensions/GUI/CCControlExtension/CCScale9Sprite.h"
+#include "label_nodes/CCLabelTTFEx.h"
+
 NS_CC_BEGIN
 
 CC_DLL const char* cocos2dVersion();

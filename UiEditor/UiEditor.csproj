@@ -48,7 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cocos2dDllImporter.cs" />
+    <Compile Include="DirUtil.cs" />
     <Compile Include="DllImporter.cs" />
+    <Compile Include="ExportHelper.cs" />
+    <Compile Include="GlobalConfig.cs" />
     <Compile Include="UiDesignWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -76,11 +79,15 @@
       <DependentUpon>UiPropertyWidget.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CCColor3B.cs" />
+    <Compile Include="UI\CCLabelTTF.cs" />
+    <Compile Include="UI\CCMenu.cs" />
+    <Compile Include="UI\CCMenuItemSprite.cs" />
     <Compile Include="UI\CCNode.cs" />
     <Compile Include="UI\CCNodeRGBA.cs" />
     <Compile Include="UI\CCObject.cs" />
     <Compile Include="UI\CCPoint.cs" />
     <Compile Include="UI\CCProperty.cs" />
+    <Compile Include="UI\CCSCale9Sprite.cs" />
     <Compile Include="UI\CCSize.cs" />
     <Compile Include="UI\CCSprite.cs" />
     <EmbeddedResource Include="UiDesignWidget.resx">

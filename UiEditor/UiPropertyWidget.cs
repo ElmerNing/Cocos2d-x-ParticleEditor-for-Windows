@@ -31,7 +31,7 @@ namespace UiEditor
                     continue;
                 }
                 UiPropertyGrid grid = UiPropertyGrid.create(node, fields[i]);
-                grid.Location = new Point(4, 50 * i + 50);
+                grid.Location = new Point(4, 30 * i + 50);
                 this.Controls.Add(grid);
             }
         }

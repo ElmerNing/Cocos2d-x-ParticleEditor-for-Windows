@@ -278,14 +278,34 @@ void HelloWorld::ChangeUi( CCNode* node )
 	{
 		mUiNode->addChild(node,2,1);
 	}else
-	{
-		CCSprite* sprite = CCSprite::createWithSpriteFrameName("s_crusade_update_tile.png");
-		//CCSprite* sprite = CCSprite::create("123.png");
-		sprite->setPosition(ccp(0,900));
+	{/*
+		//CCSprite* sprite = CCSprite::createWithSpriteFrameName("s_crusade_update_tile.png");
+		CCSprite* sprite = CCSprite::create("123.jpg");
+		sprite->setPosition(ccp(mUiNode->getContentSize().width*0.5f, mUiNode->getContentSize().height*0.5));
 		sprite->setAnchorPoint(ccp(0.5,0.5));
+		sprite->setRotation(100);
 		CCNode* node = CCNode::create();
 		//node->addChild(sprite);
-		mUiNode->addChild(sprite);
+		mUiNode->addChild(sprite);*/
+		CCMenu* menu = CCMenu::create();
+		menu->setPosition(CCPointZero);
+
+		char norm[32];
+		char sel[32];
+		sprintf(norm, "uc_btn_%d_n.png", 4);
+		sprintf(sel, "uc_btn_%d_t.png", 4);
+		CCMenuItemSprite* item = CCMenuItemSprite::create(
+			CCSprite::createWithSpriteFrameName(norm),
+			CCSprite::createWithSpriteFrameName(sel),
+			CCSprite::createWithSpriteFrameName("uc_btn_1_disable.png")
+			);
+		item->setPosition(ccp(500,500));
+		menu->addChild(item);
+
+		CCLabelTTF* label = CCLabelTTF::create("abcc","", 30);
+		item->addChild(label);
+		mUiNode->addChild(menu);
+
 	}
 }
 

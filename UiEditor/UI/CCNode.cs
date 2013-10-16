@@ -27,5 +27,27 @@ namespace UiEditor.UI
             }
             children.Add(name, node);
         }
+
+        public List<String> getAllNodeNames()
+        {
+            return getAllNodeNamesHelper(this.children);
+        }
+
+        private List<String> getAllNodeNamesHelper(Dictionary<string, CCNode> children)
+        {
+            List<String> list = new List<String>();
+            if (children != null)
+            {
+                foreach (KeyValuePair<string, CCNode> pair in children)
+                {
+                    if (!pair.Key.StartsWith("__"))
+                    {
+                        list.Add(pair.Key);
+                        list.AddRange(getAllNodeNamesHelper(pair.Value.children));
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

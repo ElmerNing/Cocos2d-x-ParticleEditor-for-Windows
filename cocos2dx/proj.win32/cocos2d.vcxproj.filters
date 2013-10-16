@@ -106,6 +106,9 @@
     <Filter Include="CCLayoutNode">
       <UniqueIdentifier>{b63f6ce0-9238-4404-8adf-738c067f5401}</UniqueIdentifier>
     </Filter>
+    <Filter Include="extensions">
+      <UniqueIdentifier>{a887c2f2-bc6a-4c47-a986-d69984b374d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\base_nodes\CCAtlasNode.cpp">
@@ -482,6 +485,12 @@
     </ClCompile>
     <ClCompile Include="..\CCLayoutNode\CCLayoutNodeHelper.cpp">
       <Filter>CCLayoutNode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\extensions\GUI\CCControlExtension\CCScale9Sprite.cpp">
+      <Filter>extensions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\label_nodes\CCLabelTTFEx.cpp">
+      <Filter>label_nodes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -950,6 +959,15 @@
       <Filter>CCLayoutNode</Filter>
     </ClInclude>
     <ClInclude Include="..\CCLayoutNode\CCLayoutNodeHelper.h">
+      <Filter>CCLayoutNode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\extensions\GUI\CCControlExtension\CCScale9Sprite.h">
+      <Filter>extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\label_nodes\CCLabelTTFEx.h">
+      <Filter>label_nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CCLayoutNode\CCLayoutNodeConfig.h">
       <Filter>CCLayoutNode</Filter>
     </ClInclude>
   </ItemGroup>

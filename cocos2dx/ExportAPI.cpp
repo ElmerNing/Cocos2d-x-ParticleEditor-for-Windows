@@ -53,6 +53,12 @@ extern "C"
 		return true;
 	}
 
+	MEDUSA_EXPORT_API bool MAddSearchPath(char* path)
+	{
+		CCFileUtils::sharedFileUtils()->addSearchPath(path);
+		return true;
+	}
+
 	MEDUSA_EXPORT_API bool MRemoveSpriteFrames()
 	{
 		CCSpriteFrameCache::sharedSpriteFrameCache()->removeSpriteFrames();

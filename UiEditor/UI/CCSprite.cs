@@ -9,5 +9,7 @@ namespace UiEditor.UI
     {
         public string spriteFrameName = null;
         public string spriteFileName = null;
+        public bool flipX = false;
+        public bool flipY = false;
     }
 }

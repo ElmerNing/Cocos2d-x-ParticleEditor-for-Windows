@@ -20,7 +20,7 @@ namespace UiEditor.UI
         {
             try
             {
-                string[] rgb = str.Split(',', ':', '-', '.');
+                string[] rgb = str.Split(',', ':', '-', '_');
                 CCPoint clr = new CCPoint();
                 clr.x = float.Parse(rgb[0]);
                 clr.y = float.Parse(rgb[1]);
