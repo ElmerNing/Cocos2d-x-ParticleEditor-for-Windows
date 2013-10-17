@@ -23,7 +23,11 @@ namespace UiEditor
             Type type = node.GetType();
             FieldInfo[] fields = type.GetFields();
             this.Controls.Clear();
-
+            Label label = new Label();
+            label.Text = type.ToString();
+            label.Location = new Point(4, 25);
+            label.AutoSize = true;
+            this.Controls.Add(label);
             for (int i = 0; i < fields.Length; i++)
             {
                 if (fields[i].Name.ToLower() == "children")
@@ -34,8 +38,6 @@ namespace UiEditor
                 grid.Location = new Point(4, 30 * i + 50);
                 this.Controls.Add(grid);
             }
-        }
-
-        
+        }        
     }
 }

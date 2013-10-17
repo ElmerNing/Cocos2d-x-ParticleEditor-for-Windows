@@ -13,7 +13,7 @@ namespace UiEditor.UI
             NullValueHandling = NullValueHandling.Ignore,
             TypeNameHandling = TypeNameHandling.Auto,
             TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple,
-            Formatting = Formatting.Indented
+            Formatting = Formatting.None
         };
 
         public string ToJson()

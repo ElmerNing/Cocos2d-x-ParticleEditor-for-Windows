@@ -28,9 +28,6 @@ CCLayoutNode* CCLayoutNode::create( const Json::Value& json )
 
 bool CCLayoutNode::init( const Json::Value& json )
 {
-	mNodesDict->removeAllObjects();
-	removeAllChildren();
-
 	CCLayoutNodeHelper::setCCNode(this, json);
 
 	addChildrenByJson(this, json["children"]);

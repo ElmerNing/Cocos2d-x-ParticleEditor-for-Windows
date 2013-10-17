@@ -28,22 +28,22 @@ namespace UiEditor.UI
             children.Add(name, node);
         }
 
-        public List<String> getAllNodeNames()
+        public Dictionary<string, CCNode> getAllNodesDistinct()
         {
             return getAllNodeNamesHelper(this.children);
         }
 
-        private List<String> getAllNodeNamesHelper(Dictionary<string, CCNode> children)
+        private Dictionary<string, CCNode> getAllNodeNamesHelper(Dictionary<string, CCNode> children)
         {
-            List<String> list = new List<String>();
+            Dictionary<string, CCNode> list = new Dictionary<string, CCNode>();
             if (children != null)
             {
                 foreach (KeyValuePair<string, CCNode> pair in children)
                 {
                     if (!pair.Key.StartsWith("__"))
                     {
-                        list.Add(pair.Key);
-                        list.AddRange(getAllNodeNamesHelper(pair.Value.children));
+                        list.Add(pair.Key, pair.Value);
+                        list.Union(getAllNodeNamesHelper(pair.Value.children));
                     }
                 }
             }

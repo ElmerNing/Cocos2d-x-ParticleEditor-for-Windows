@@ -23,17 +23,30 @@ namespace UiEditor
             FileStream fs = File.Open(srcPath, FileMode.OpenOrCreate);
             StreamReader reader = new StreamReader(fs);
             CCNode node = CCNode.FromJson<CCNode>(reader.ReadToEnd());
+            reader.Close();
+            fs.Close();
             if (node == null)
                 return "";
-
-            string prefix = "LY_" + Path.GetFileNameWithoutExtension(srcPath).ToUpper()+"_";
-
+         
             StringWriter sw = new StringWriter();
-            foreach (string name in node.getAllNodeNames())
+            string filename = Path.GetFileNameWithoutExtension(srcPath);
+            string hppGuard = "LY_" + filename.ToUpper() + "_H__";
+            sw.WriteLine("#ifndef " + hppGuard);
+            sw.WriteLine("#define " + hppGuard);
+            sw.WriteLine();
+
+            foreach (KeyValuePair<string, CCNode> pair in node.getAllNodesDistinct())
             {
-                string line = "#define " + prefix + name.ToUpper() + "    " + "\"" + name + "\"";
+                string name = pair.Key;
+                string typename = pair.Value.GetType().Name;
+
+                //string name
+                string prefix = "LY_" + filename.ToUpper() + "_";
+                string line = "#define " + string.Join("_", "LY", filename.ToUpper(), typename.ToUpper(), name.ToUpper()) + "    " +"\"" + name + "\"";
                 sw.WriteLine(line);
             }
+            sw.WriteLine();
+            sw.WriteLine("#endif");
             return sw.ToString();
         }
 
@@ -54,10 +67,10 @@ namespace UiEditor
 
             string dstContent = Convert(srcPath);
 
-            FileStream fs = File.OpenWrite(dstPath);
-            StreamWriter sw = new StreamWriter(fs);
+            UTF8Encoding utf8 = new UTF8Encoding(false);
+            StreamWriter sw = new StreamWriter(dstPath, false, utf8);
             sw.Write(dstContent);
-
+            sw.Close();
 
             return true;
         }

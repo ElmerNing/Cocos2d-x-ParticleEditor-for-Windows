@@ -3,7 +3,8 @@
 
 #include "../include/cocos2d.h"
 
-#include "../lib_json/json/json.h"
+#include "CCLayoutNodeConfig.h"
+
 using namespace cocos2d;
 
 class CCLayoutNodeHelper 

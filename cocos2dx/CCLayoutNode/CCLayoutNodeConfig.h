@@ -1,3 +1,7 @@
+
+#include "../lib_json/json/json.h"
+#include "cocos2d.h"
+using namespace cocos2d;
 #define UIEDITOR 1
 
 #define GET_TITLE_FONT std::string("")

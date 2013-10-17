@@ -11,7 +11,7 @@ namespace UiEditor
         static public String ResourceDir = @"D:\bwzq\ZhaoQin\ZhaoQin\Resources";
         
         //导出头文件目录@
-        static public String ExportHeaderPath = @"D:\Lab\abc";
+        static public String ExportHeaderPath = @"D:\bwzq\ZhaoQin\ZhaoQin\Classes\game\gameScene\layout";
         
         //布局文件保存目录
         static public String LayoutFileDir = @"D:\bwzq\ZhaoQin\ZhaoQin\Resources\layout";

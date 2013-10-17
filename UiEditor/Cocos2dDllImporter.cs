@@ -9,7 +9,7 @@ namespace UiEditor
     {
         public delegate bool MInitializeApplication(int hwnd);
         public delegate bool MGameLoop(float interval);
-        public delegate bool MAddSearchPath(StringBuilder path);
+        public delegate bool MSetResourceDir(StringBuilder path);
         public delegate bool MAddSpriteFramesWithFile(StringBuilder path);
         public delegate bool MRemoveSpriteFrames();
         public delegate bool MUiChanged(StringBuilder json);

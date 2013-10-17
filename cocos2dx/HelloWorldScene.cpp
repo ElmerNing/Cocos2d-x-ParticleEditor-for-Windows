@@ -287,25 +287,12 @@ void HelloWorld::ChangeUi( CCNode* node )
 		CCNode* node = CCNode::create();
 		//node->addChild(sprite);
 		mUiNode->addChild(sprite);*/
-		CCMenu* menu = CCMenu::create();
-		menu->setPosition(CCPointZero);
 
-		char norm[32];
-		char sel[32];
-		sprintf(norm, "uc_btn_%d_n.png", 4);
-		sprintf(sel, "uc_btn_%d_t.png", 4);
-		CCMenuItemSprite* item = CCMenuItemSprite::create(
-			CCSprite::createWithSpriteFrameName(norm),
-			CCSprite::createWithSpriteFrameName(sel),
-			CCSprite::createWithSpriteFrameName("uc_btn_1_disable.png")
-			);
-		item->setPosition(ccp(500,500));
-		menu->addChild(item);
-
-		CCLabelTTF* label = CCLabelTTF::create("abcc","", 30);
-		item->addChild(label);
-		mUiNode->addChild(menu);
-
+		CCLabelTTFEx* ex = CCLabelTTFEx::labelWithString("123", "", 100);
+		//ex->setColor(ccBLACK);
+		//ex->setStroke(2,ccWHITE);
+		ex->setPosition(ccp(400,400));
+		mUiNode->addChild(ex);
 	}
 }
 

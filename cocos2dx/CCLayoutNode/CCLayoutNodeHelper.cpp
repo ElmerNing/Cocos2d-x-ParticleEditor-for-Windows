@@ -1,5 +1,5 @@
+
 #include "CCLayoutNodeHelper.h"
-#include "CCLayoutNodeConfig.h"
 
 inline static CCPoint JsonToCCPoint(const Json::Value& json)
 {
@@ -79,7 +79,7 @@ void CCLayoutNodeHelper::setCCNode( CCNode* node, const Json::Value& json )
 	SET_PROPERTY(json["anchorPoint"], JsonToCCPoint, node, setAnchorPoint);
 	SET_PROPERTY(json["rotation"], JsonTofloat, node, setRotation);
 	SET_PROPERTY(json["visible"], JsonTobool, node, setVisible);
-	SET_PROPERTY(json["zOrder"], JsonTobool, node, setZOrder);
+	SET_PROPERTY(json["zOrder"], JsonTobool, node, _setZOrder);
 	SET_PROPERTY(json["scale"]["x"], JsonTofloat, node, setScaleX);
 	SET_PROPERTY(json["scale"]["y"], JsonTofloat, node, setScaleY);
 }
@@ -128,7 +128,7 @@ CCNode* CCLayoutNodeHelper::create( const Json::Value& json )
 		return createCCLabelTTF(json);
 	}
 
-	if (type == "CCLabelTTFEX")
+	if (type == "CCLabelTTFEx")
 	{
 		return createCCLabelTTFEx(json);
 	}
@@ -219,7 +219,7 @@ CCLabelTTFEx* CCLayoutNodeHelper::createCCLabelTTFEx(const Json::Value& json)
 	{
 		text = json["text"].asString();
 	}
-	if (json["text"] != Json::nullValue)
+	if (json["languagetext"] != Json::nullValue)
 	{
 		text = json["languagetext"].asString();
 	}

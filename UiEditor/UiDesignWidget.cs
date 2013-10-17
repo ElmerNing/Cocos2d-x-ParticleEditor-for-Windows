@@ -92,7 +92,8 @@ namespace UiEditor
             }
             if (mBaseNode != null)
             {
-                StreamWriter sw = new StreamWriter(mSavePathLabel.Text, false, Encoding.UTF8);
+                UTF8Encoding utf8 = new UTF8Encoding(false);
+                StreamWriter sw = new StreamWriter(mSavePathLabel.Text, false, utf8);
                 sw.Write(mBaseNode.ToJson());
                 sw.Close();
             }
@@ -212,7 +213,7 @@ namespace UiEditor
             
         }
 
-        public void Reset()
+        private void Reset()
         {
             mNodesTree.Nodes.Clear();
             mPropertyWidget.Controls.Clear();
