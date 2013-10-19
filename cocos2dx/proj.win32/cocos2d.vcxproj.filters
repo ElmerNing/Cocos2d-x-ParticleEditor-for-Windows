@@ -492,6 +492,12 @@
     <ClCompile Include="..\label_nodes\CCLabelTTFEx.cpp">
       <Filter>label_nodes</Filter>
     </ClCompile>
+    <ClCompile Include="..\CCLayoutNode\SFLanguageManager.cpp">
+      <Filter>CCLayoutNode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\CCLayoutNode\SFFontManager.cpp">
+      <Filter>CCLayoutNode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\base_nodes\CCAtlasNode.h">
@@ -968,6 +974,12 @@
       <Filter>label_nodes</Filter>
     </ClInclude>
     <ClInclude Include="..\CCLayoutNode\CCLayoutNodeConfig.h">
+      <Filter>CCLayoutNode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CCLayoutNode\SFLanguageManager.h">
+      <Filter>CCLayoutNode</Filter>
+    </ClInclude>
+    <ClInclude Include="..\CCLayoutNode\SFFontManager.h">
       <Filter>CCLayoutNode</Filter>
     </ClInclude>
   </ItemGroup>

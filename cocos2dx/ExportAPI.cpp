@@ -6,6 +6,8 @@
 #include "HelloWorldScene.h"
 #include "lib_json/json/json.h"
 #include "CCLayoutNode/CCLayoutNode.h"
+#include "CCLayoutNode/SFLanguageManager.h"
+#include "CCLayoutNode/SFFontManager.h"
 
 extern "C"
 {
@@ -65,7 +67,10 @@ extern "C"
 		CCFileUtils::sharedFileUtils()->addSearchPath(path);
 
 		//language
+		SFLanguageManager::shareLanguageManager()->loadXMLFile("language/language.xml");
 
+		//font
+		SFFontManager::sharedSFFontManager();
 		return true;
 	}
 

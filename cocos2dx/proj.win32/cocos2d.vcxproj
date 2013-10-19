@@ -144,6 +144,8 @@ xcopy /Y /Q "$(ProjectDir)..\platform\third_party\win32\libraries\*.*" "$(OutDir
     <ClCompile Include="..\base_nodes\CCNode.cpp" />
     <ClCompile Include="..\CCLayoutNode\CCLayoutNode.cpp" />
     <ClCompile Include="..\CCLayoutNode\CCLayoutNodeHelper.cpp" />
+    <ClCompile Include="..\CCLayoutNode\SFFontManager.cpp" />
+    <ClCompile Include="..\CCLayoutNode\SFLanguageManager.cpp" />
     <ClCompile Include="..\cocoa\CCAffineTransform.cpp" />
     <ClCompile Include="..\cocoa\CCArray.cpp" />
     <ClCompile Include="..\cocoa\CCAutoreleasePool.cpp" />
@@ -281,6 +283,8 @@ xcopy /Y /Q "$(ProjectDir)..\platform\third_party\win32\libraries\*.*" "$(OutDir
     <ClInclude Include="..\CCLayoutNode\CCLayoutNode.h" />
     <ClInclude Include="..\CCLayoutNode\CCLayoutNodeConfig.h" />
     <ClInclude Include="..\CCLayoutNode\CCLayoutNodeHelper.h" />
+    <ClInclude Include="..\CCLayoutNode\SFFontManager.h" />
+    <ClInclude Include="..\CCLayoutNode\SFLanguageManager.h" />
     <ClInclude Include="..\cocoa\CCAffineTransform.h" />
     <ClInclude Include="..\cocoa\CCArray.h" />
     <ClInclude Include="..\cocoa\CCAutoreleasePool.h" />

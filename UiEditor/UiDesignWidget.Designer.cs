@@ -51,11 +51,15 @@
             this.重命名ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mNewBtn = new System.Windows.Forms.Button();
             this.mSaveBtn = new System.Windows.Forms.Button();
-            this.mPropertyWidget = new UiEditor.UiPropertyWidget();
             this.mOpenBtn = new System.Windows.Forms.Button();
             this.mSavePathLabel = new System.Windows.Forms.Label();
             this.mFreshBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.mPropertyWidget = new UiEditor.UiPropertyWidget();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.mContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +80,7 @@
             this.cCSpriteToolStripMenuItem,
             this.重命名ToolStripMenuItem});
             this.mContextMenuStrip.Name = "mContextMenuStrip";
-            this.mContextMenuStrip.Size = new System.Drawing.Size(153, 114);
+            this.mContextMenuStrip.Size = new System.Drawing.Size(125, 92);
             // 
             // cCNodeToolStripMenuItem
             // 
@@ -89,7 +93,7 @@
             this.cCMenuItemSpriteToolStripMenuItem,
             this.cCMenuToolStripMenuItem});
             this.cCNodeToolStripMenuItem.Name = "cCNodeToolStripMenuItem";
-            this.cCNodeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cCNodeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.cCNodeToolStripMenuItem.Text = "插入节点";
             this.cCNodeToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnInsertClick);
             // 
@@ -146,7 +150,7 @@
             this.cCMenuItemSpriteToolStripMenuItem1,
             this.cCMenuToolStripMenuItem1});
             this.更改节点ToolStripMenuItem.Name = "更改节点ToolStripMenuItem";
-            this.更改节点ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.更改节点ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.更改节点ToolStripMenuItem.Text = "更改节点";
             this.更改节点ToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnChangeItemClick);
             // 
@@ -195,14 +199,14 @@
             // cCSpriteToolStripMenuItem
             // 
             this.cCSpriteToolStripMenuItem.Name = "cCSpriteToolStripMenuItem";
-            this.cCSpriteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cCSpriteToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.cCSpriteToolStripMenuItem.Text = "删除节点";
             this.cCSpriteToolStripMenuItem.Click += new System.EventHandler(this.OnDeleteClick);
             // 
             // 重命名ToolStripMenuItem
             // 
             this.重命名ToolStripMenuItem.Name = "重命名ToolStripMenuItem";
-            this.重命名ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.重命名ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.重命名ToolStripMenuItem.Text = "重命名";
             this.重命名ToolStripMenuItem.Click += new System.EventHandler(this.OnRenameClick);
             // 
@@ -225,13 +229,6 @@
             this.mSaveBtn.Text = "保存";
             this.mSaveBtn.UseVisualStyleBackColor = true;
             this.mSaveBtn.Click += new System.EventHandler(this.OnSaveBtnClick);
-            // 
-            // mPropertyWidget
-            // 
-            this.mPropertyWidget.Location = new System.Drawing.Point(253, 133);
-            this.mPropertyWidget.Name = "mPropertyWidget";
-            this.mPropertyWidget.Size = new System.Drawing.Size(379, 800);
-            this.mPropertyWidget.TabIndex = 3;
             // 
             // mOpenBtn
             // 
@@ -271,10 +268,57 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.onExportHppClick);
             // 
+            // mPropertyWidget
+            // 
+            this.mPropertyWidget.Location = new System.Drawing.Point(253, 133);
+            this.mPropertyWidget.Name = "mPropertyWidget";
+            this.mPropertyWidget.Size = new System.Drawing.Size(470, 800);
+            this.mPropertyWidget.TabIndex = 3;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(605, 413);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(44, 38);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(605, 472);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(44, 34);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(553, 472);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(46, 33);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(656, 472);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(49, 33);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // UiDesignWidget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mSavePathLabel);
             this.Controls.Add(this.mFreshBtn);
@@ -320,5 +364,9 @@
         private System.Windows.Forms.ToolStripMenuItem cCMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cCMenuToolStripMenuItem1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }

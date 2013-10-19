@@ -49,7 +49,7 @@ inline static std::string JsonToFontname(const Json::Value& json)
 		return GET_TITLE_FONT;		
 	}else
 	{
-		return GET_FONT_NAME(json.asString());
+		return GET_FONT_NAME(json.asCString());
 	}
 	
 }
@@ -61,7 +61,21 @@ inline static std::string JsonToLanguagecharptr(const Json::Value& json)
 
 inline static CCNode* JsonToCCNode(const Json::Value& json)
 {
-	return CCLayoutNodeHelper::create(json);
+	CCNode* node = CCLayoutNodeHelper::create(json);
+	Json::ValueIterator it = json["children"].begin();
+	for (;it != json["children"].end(); it++)
+	{
+		std::string name = it.memberName();
+		if (!name.empty() && name.find("__") == std::string::npos)
+		{
+			CCNode* child = JsonToCCNode(*it);
+			if (child)
+			{
+				node->addChild(child);
+			}
+		}
+	}
+	return node;
 }
 
 #define SET_PROPERTY(json, getter, target, setter) \
@@ -186,7 +200,7 @@ CCLabelTTF* CCLayoutNodeHelper::createCCLabelTTF(const Json::Value& json)
 	}
 	if (json["languagetext"] != Json::nullValue)
 	{
-		text = json["languagetext"].asString();
+		text = GET_LANGUAGE_CONTENT(json["languagetext"].asString());
 	}
 
 	std::string fontname = JsonToFontname(json["fontName"]);
@@ -221,7 +235,7 @@ CCLabelTTFEx* CCLayoutNodeHelper::createCCLabelTTFEx(const Json::Value& json)
 	}
 	if (json["languagetext"] != Json::nullValue)
 	{
-		text = json["languagetext"].asString();
+		text = GET_LANGUAGE_CONTENT(json["languagetext"].asString());
 	}
 	
 	std::string fontname = JsonToFontname(json["fontName"]);
@@ -240,6 +254,13 @@ CCLabelTTFEx* CCLayoutNodeHelper::createCCLabelTTFEx(const Json::Value& json)
 		node = CCLabelTTFEx::labelWithString(text.c_str(), fontname.c_str(), fontSize );
 	}
 	
+	if (json["strokeColor"] != Json::nullValue)
+	{
+		int size = json["strokeSize"].asInt();
+		ccColor3B color = JsonToccColor3B(json["strokeColor"]);
+		node->setStroke(size, color);
+	}
+
 	setCCSprite(node, json);
 	setCCNodeRGBA(node, json);
 	setCCNode(node, json);
@@ -259,6 +280,12 @@ CCMenuItemSprite* CCLayoutNodeHelper::createCCMenuItemSprite(const Json::Value& 
 #endif
 	setCCNode(node, json);
 
+	return node;
+}
+
+CCMenuItemToggle* CCLayoutNodeHelper::createCCMenuItemToggle(const Json::Value& json)
+{
+	CCMenuItemToggle* node = CCMenuItemToggle::create();
 	return node;
 }
 

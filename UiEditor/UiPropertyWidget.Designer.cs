@@ -35,11 +35,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "UiPropertyWidget";
-            this.Size = new System.Drawing.Size(379, 514);
+            this.Size = new System.Drawing.Size(470, 688);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
     }
 }

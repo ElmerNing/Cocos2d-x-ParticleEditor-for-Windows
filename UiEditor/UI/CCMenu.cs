@@ -13,7 +13,7 @@ namespace UiEditor.UI
             position.x = 0;
             position.y = 0;
 
-            this.addChild("btn_example", new CCMenuItemSprite());
+            //this.addChild("btn_example", new CCMenuItemSprite());
         }
         public bool isTopButton = false;
     }

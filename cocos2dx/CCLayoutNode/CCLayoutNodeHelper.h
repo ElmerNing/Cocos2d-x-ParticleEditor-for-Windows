@@ -23,6 +23,7 @@ public:
 	static CCLabelTTF* createCCLabelTTF(const Json::Value& json);
 	static CCLabelTTFEx* createCCLabelTTFEx(const Json::Value& json);
 	static CCMenuItemSprite* createCCMenuItemSprite(const Json::Value& json);
+	static CCMenuItemToggle* createCCMenuItemToggle(const Json::Value& json);
 	static CCMenu* createCCMenu(const Json::Value& json);
 };
 #endif // CCLayoutNodeHelper_h__

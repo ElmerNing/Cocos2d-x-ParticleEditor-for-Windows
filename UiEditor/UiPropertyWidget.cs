@@ -17,7 +17,6 @@ namespace UiEditor
         {
             InitializeComponent();
         }
-
         public void InitWithCCNode(CCNode node)
         {
             Type type = node.GetType();

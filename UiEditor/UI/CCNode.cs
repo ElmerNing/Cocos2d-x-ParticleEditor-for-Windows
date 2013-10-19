@@ -40,11 +40,12 @@ namespace UiEditor.UI
             {
                 foreach (KeyValuePair<string, CCNode> pair in children)
                 {
-                    if (!pair.Key.StartsWith("__"))
+                    if (!pair.Key.StartsWith("__") && !pair.Key.StartsWith("#"))
                     {
                         list.Add(pair.Key, pair.Value);
-                        list.Union(getAllNodeNamesHelper(pair.Value.children));
                     }
+                    Dictionary<string, CCNode> list2 = getAllNodeNamesHelper(pair.Value.children);
+                    list = list.Concat(list2).ToDictionary(k => k.Key, v => v.Value);
                 }
             }
             return list;

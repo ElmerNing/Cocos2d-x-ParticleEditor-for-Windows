@@ -35,15 +35,22 @@ namespace UiEditor
             sw.WriteLine("#define " + hppGuard);
             sw.WriteLine();
 
-            foreach (KeyValuePair<string, CCNode> pair in node.getAllNodesDistinct())
+            Dictionary<string, CCNode> nodes = node.getAllNodesDistinct();
+            foreach (KeyValuePair<string, CCNode> pair in nodes)
             {
                 string name = pair.Key;
                 string typename = pair.Value.GetType().Name;
 
                 //string name
-                string prefix = "LY_" + filename.ToUpper() + "_";
-                string line = "#define " + string.Join("_", "LY", filename.ToUpper(), typename.ToUpper(), name.ToUpper()) + "    " +"\"" + name + "\"";
+                string define = "#define ";
+                string macro1 = string.Join("_", "LY", filename.ToUpper(), typename.ToUpper(), name.ToUpper());
+                string value1 = "\"" + name + "\"";
+                string line = define + macro1 + "\t" + value1;
                 sw.WriteLine(line);
+
+                string macro2 = string.Join("_", "LY_GET", filename.ToUpper(), name.ToUpper()) + "(layoutnode)";
+                string value2 = "dynamic_cast<" + typename + "*>(" + "layoutnode->getChildByName(" + value1 + "))";
+                sw.WriteLine(define + macro2 + "\t" + value2);
             }
             sw.WriteLine();
             sw.WriteLine("#endif");
