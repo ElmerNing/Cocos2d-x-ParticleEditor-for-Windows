@@ -56,10 +56,10 @@
             this.mFreshBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.mPropertyWidget = new UiEditor.UiPropertyWidget();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.upbtn = new System.Windows.Forms.Button();
+            this.downbtn = new System.Windows.Forms.Button();
+            this.leftbtn = new System.Windows.Forms.Button();
+            this.rightbtn = new System.Windows.Forms.Button();
             this.mContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -275,50 +275,54 @@
             this.mPropertyWidget.Size = new System.Drawing.Size(470, 800);
             this.mPropertyWidget.TabIndex = 3;
             // 
-            // button2
+            // upbtn
             // 
-            this.button2.Location = new System.Drawing.Point(605, 413);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(44, 38);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.upbtn.Location = new System.Drawing.Point(605, 413);
+            this.upbtn.Name = "upbtn";
+            this.upbtn.Size = new System.Drawing.Size(44, 38);
+            this.upbtn.TabIndex = 8;
+            this.upbtn.Text = "button2";
+            this.upbtn.UseVisualStyleBackColor = true;
+            this.upbtn.Click += new System.EventHandler(this.onFunctionBtnClick);
             // 
-            // button3
+            // downbtn
             // 
-            this.button3.Location = new System.Drawing.Point(605, 472);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(44, 34);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.downbtn.Location = new System.Drawing.Point(605, 472);
+            this.downbtn.Name = "downbtn";
+            this.downbtn.Size = new System.Drawing.Size(44, 34);
+            this.downbtn.TabIndex = 9;
+            this.downbtn.Text = "button3";
+            this.downbtn.UseVisualStyleBackColor = true;
+            this.downbtn.Click += new System.EventHandler(this.onFunctionBtnClick);
             // 
-            // button4
+            // leftbtn
             // 
-            this.button4.Location = new System.Drawing.Point(553, 472);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(46, 33);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.leftbtn.Location = new System.Drawing.Point(553, 472);
+            this.leftbtn.Name = "leftbtn";
+            this.leftbtn.Size = new System.Drawing.Size(46, 33);
+            this.leftbtn.TabIndex = 10;
+            this.leftbtn.Text = "button4";
+            this.leftbtn.UseVisualStyleBackColor = true;
+            this.leftbtn.Click += new System.EventHandler(this.onFunctionBtnClick);
             // 
-            // button5
+            // rightbtn
             // 
-            this.button5.Location = new System.Drawing.Point(656, 472);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(49, 33);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.rightbtn.Location = new System.Drawing.Point(656, 472);
+            this.rightbtn.Name = "rightbtn";
+            this.rightbtn.Size = new System.Drawing.Size(49, 33);
+            this.rightbtn.TabIndex = 11;
+            this.rightbtn.Text = "button5";
+            this.rightbtn.UseVisualStyleBackColor = true;
+            this.rightbtn.Click += new System.EventHandler(this.onFunctionBtnClick);
             // 
             // UiDesignWidget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.rightbtn);
+            this.Controls.Add(this.leftbtn);
+            this.Controls.Add(this.downbtn);
+            this.Controls.Add(this.upbtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mSavePathLabel);
             this.Controls.Add(this.mFreshBtn);
@@ -364,9 +368,9 @@
         private System.Windows.Forms.ToolStripMenuItem cCMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cCMenuToolStripMenuItem1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button upbtn;
+        private System.Windows.Forms.Button downbtn;
+        private System.Windows.Forms.Button leftbtn;
+        private System.Windows.Forms.Button rightbtn;
     }
 }

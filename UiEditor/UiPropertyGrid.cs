@@ -68,7 +68,15 @@ namespace UiEditor
         {
             if (mBindField.FieldType.Name.ToLower() == "string")
             {
-                mBindField.SetValue(mBindNode, property);
+                if (property != "")
+                {
+                    mBindField.SetValue(mBindNode, property);
+                }
+                else
+                {
+                    mBindField.SetValue(mBindNode, null);
+                }
+                
             }
             else
             {

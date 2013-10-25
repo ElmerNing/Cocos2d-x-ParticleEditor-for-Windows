@@ -219,6 +219,32 @@ namespace UiEditor
             mPropertyWidget.Controls.Clear();
             mBaseNode = null;
         }
+
+        private void onFunctionBtnClick(object sender, EventArgs e)
+        {
+            if (mPropertyWidget.BindCCNode == null)
+                return;
+            CCPoint pt = mPropertyWidget.BindCCNode.position;
+            if (pt == null)
+            {
+                pt = new CCPoint();
+                mPropertyWidget.BindCCNode.position = pt;
+            }
+            if (sender == upbtn)
+            {
+                pt.y += 1;
+            }else if (sender == downbtn)
+            {
+                pt.y -= 1;
+            }else if (sender == leftbtn)
+            {
+                pt.x -= 1;
+            }else if (sender == rightbtn)
+            {
+                pt.x += 1;
+            }
+            OnFreshClick(null, null);
+        }
     }
 
     class CCTreeNode : TreeNode

@@ -13,12 +13,14 @@ namespace UiEditor
 {
     public partial class UiPropertyWidget : UserControl
     {
+        public CCNode BindCCNode = null;
         public UiPropertyWidget()
         {
             InitializeComponent();
         }
         public void InitWithCCNode(CCNode node)
         {
+            BindCCNode = node;
             Type type = node.GetType();
             FieldInfo[] fields = type.GetFields();
             this.Controls.Clear();
