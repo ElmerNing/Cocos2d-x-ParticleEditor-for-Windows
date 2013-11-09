@@ -46,13 +46,13 @@ void CCLayoutNode::addChildrenByJson(CCNode* node, const Json::Value& json)
 			CCNode* child = createChild(*it);
 			if (child)
 			{			
-				node->addChild(child, json["zOrder"].asInt());
+				node->addChild(child, (*it)["zOrder"].asInt());
 				mNodesDict->setObject(child, name);
 			}
 		}
 		
 	}
-	
+
 }
 
 CCNode* CCLayoutNode::createChild(const Json::Value& json)

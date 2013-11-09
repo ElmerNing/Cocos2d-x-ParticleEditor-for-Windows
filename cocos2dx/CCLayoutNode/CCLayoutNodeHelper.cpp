@@ -93,7 +93,7 @@ void CCLayoutNodeHelper::setCCNode( CCNode* node, const Json::Value& json )
 	SET_PROPERTY(json["anchorPoint"], JsonToCCPoint, node, setAnchorPoint);
 	SET_PROPERTY(json["rotation"], JsonTofloat, node, setRotation);
 	SET_PROPERTY(json["visible"], JsonTobool, node, setVisible);
-	SET_PROPERTY(json["zOrder"], JsonTobool, node, _setZOrder);
+	//SET_PROPERTY(json["zOrder"], JsonTobool, node, _setZOrder);
 	SET_PROPERTY(json["scale"]["x"], JsonTofloat, node, setScaleX);
 	SET_PROPERTY(json["scale"]["y"], JsonTofloat, node, setScaleY);
 }

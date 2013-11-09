@@ -143,7 +143,8 @@ namespace UiEditor
 
             string name = tSelNode.Text;
             ConstructorInfo construct = insertype.GetConstructor(new Type[] { });
-            CCNode node = (CCNode)construct.Invoke(null);           
+            CCNode node = (CCNode)construct.Invoke(null);
+            node.children = tSelNode.CCNode.children;
             tParentNode.CCNode.children[name] = node;
             InitWithCCNode(mBaseNode);
         }
