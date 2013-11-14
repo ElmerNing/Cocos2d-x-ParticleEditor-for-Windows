@@ -30,8 +30,11 @@ namespace UiEditor
         }
 
         private void LoadSpriteFrames()
-        {
-            mDll.Invoke<Cocos2dDllImporter.MSetResourceDir, bool>(new StringBuilder(GlobalConfig.ResourceDir));
+        {        
+            foreach (string dir in GlobalConfig.ResourceDir)
+            {
+                mDll.Invoke<Cocos2dDllImporter.MSetResourceDir, bool>(new StringBuilder(dir));
+            }
             foreach (string dir in GlobalConfig.TexturePlistDirs)
             {
                 List<String> paths = DirUtil.getAllFiles(dir, ".plist");
