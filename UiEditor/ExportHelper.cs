@@ -90,10 +90,10 @@ namespace UiEditor
 
             string dstContent = Convert(srcPath);
 
-            /*UTF8Encoding utf8 = new UTF8Encoding(false);
+            UTF8Encoding utf8 = new UTF8Encoding(false);
             StreamWriter sw = new StreamWriter(dstPath, false, utf8);
             sw.Write(dstContent);
-            sw.Close();*/
+            sw.Close();
 
             return true;
         }
