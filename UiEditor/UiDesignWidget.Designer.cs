@@ -60,6 +60,8 @@
             this.downbtn = new System.Windows.Forms.Button();
             this.leftbtn = new System.Windows.Forms.Button();
             this.rightbtn = new System.Windows.Forms.Button();
+            this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.粘贴ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,9 +80,11 @@
             this.cCNodeToolStripMenuItem,
             this.更改节点ToolStripMenuItem,
             this.cCSpriteToolStripMenuItem,
-            this.重命名ToolStripMenuItem});
+            this.重命名ToolStripMenuItem,
+            this.复制ToolStripMenuItem,
+            this.粘贴ToolStripMenuItem});
             this.mContextMenuStrip.Name = "mContextMenuStrip";
-            this.mContextMenuStrip.Size = new System.Drawing.Size(125, 92);
+            this.mContextMenuStrip.Size = new System.Drawing.Size(153, 158);
             // 
             // cCNodeToolStripMenuItem
             // 
@@ -93,7 +97,7 @@
             this.cCMenuItemSpriteToolStripMenuItem,
             this.cCMenuToolStripMenuItem});
             this.cCNodeToolStripMenuItem.Name = "cCNodeToolStripMenuItem";
-            this.cCNodeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.cCNodeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cCNodeToolStripMenuItem.Text = "插入节点";
             this.cCNodeToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnInsertClick);
             // 
@@ -150,7 +154,7 @@
             this.cCMenuItemSpriteToolStripMenuItem1,
             this.cCMenuToolStripMenuItem1});
             this.更改节点ToolStripMenuItem.Name = "更改节点ToolStripMenuItem";
-            this.更改节点ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.更改节点ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.更改节点ToolStripMenuItem.Text = "更改节点";
             this.更改节点ToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.OnChangeItemClick);
             // 
@@ -199,14 +203,14 @@
             // cCSpriteToolStripMenuItem
             // 
             this.cCSpriteToolStripMenuItem.Name = "cCSpriteToolStripMenuItem";
-            this.cCSpriteToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.cCSpriteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cCSpriteToolStripMenuItem.Text = "删除节点";
             this.cCSpriteToolStripMenuItem.Click += new System.EventHandler(this.OnDeleteClick);
             // 
             // 重命名ToolStripMenuItem
             // 
             this.重命名ToolStripMenuItem.Name = "重命名ToolStripMenuItem";
-            this.重命名ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.重命名ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.重命名ToolStripMenuItem.Text = "重命名";
             this.重命名ToolStripMenuItem.Click += new System.EventHandler(this.OnRenameClick);
             // 
@@ -315,6 +319,20 @@
             this.rightbtn.UseVisualStyleBackColor = true;
             this.rightbtn.Click += new System.EventHandler(this.onFunctionBtnClick);
             // 
+            // 复制ToolStripMenuItem
+            // 
+            this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
+            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.复制ToolStripMenuItem.Text = "复制";
+            this.复制ToolStripMenuItem.Click += new System.EventHandler(this.OnCopyClick);
+            // 
+            // 粘贴ToolStripMenuItem
+            // 
+            this.粘贴ToolStripMenuItem.Name = "粘贴ToolStripMenuItem";
+            this.粘贴ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.粘贴ToolStripMenuItem.Text = "粘贴";
+            this.粘贴ToolStripMenuItem.Click += new System.EventHandler(this.OnPastClick);
+            // 
             // UiDesignWidget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -372,5 +390,7 @@
         private System.Windows.Forms.Button downbtn;
         private System.Windows.Forms.Button leftbtn;
         private System.Windows.Forms.Button rightbtn;
+        private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 粘贴ToolStripMenuItem;
     }
 }

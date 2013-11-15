@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using UiEditor.UI;
-
-
+using System.Reflection;
+using UiEditor.Properties;
 
 namespace UiEditor
 {
@@ -20,6 +20,7 @@ namespace UiEditor
 
         private static String Convert(string srcPath)
         {
+            
             FileStream fs = File.Open(srcPath, FileMode.OpenOrCreate);
             StreamReader reader = new StreamReader(fs);
             CCNode node = CCNode.FromJson<CCNode>(reader.ReadToEnd());
@@ -27,13 +28,11 @@ namespace UiEditor
             fs.Close();
             if (node == null)
                 return "";
-         
+            
+            //相关宏
             StringWriter sw = new StringWriter();
             string filename = Path.GetFileNameWithoutExtension(srcPath);
             string hppGuard = "LY_" + filename.ToUpper() + "_H__";
-            sw.WriteLine("#ifndef " + hppGuard);
-            sw.WriteLine("#define " + hppGuard);
-            sw.WriteLine();
 
             Dictionary<string, CCNode> nodes = node.getAllNodesDistinct();
             foreach (KeyValuePair<string, CCNode> pair in nodes)
@@ -52,8 +51,25 @@ namespace UiEditor
                 string value2 = "dynamic_cast<" + typename + "*>(" + "layoutnode->getChildByName(" + value1 + "))";
                 sw.WriteLine(define + macro2 + "\t" + value2);
             }
-            sw.WriteLine();
-            sw.WriteLine("#endif");
+
+            //头文件
+            string header = Resources.headerTemplate;
+            header = header.Replace("[macro]", sw.ToString());
+            header = header.Replace("[name]", filename);
+
+            string functions = "";
+            foreach (KeyValuePair<string, CCNode> pair in nodes)
+            {
+                string key = pair.Key;
+                string type = pair.Value.GetType().Name;
+
+                string function = Resources.funcTemplate;
+                function = function.Replace("[type]", type);
+                function = function.Replace("[key]", key);
+
+                functions += function;
+            }
+            header = header.Replace("[function]", functions);
             return sw.ToString();
         }
 
@@ -74,10 +90,10 @@ namespace UiEditor
 
             string dstContent = Convert(srcPath);
 
-            UTF8Encoding utf8 = new UTF8Encoding(false);
+            /*UTF8Encoding utf8 = new UTF8Encoding(false);
             StreamWriter sw = new StreamWriter(dstPath, false, utf8);
             sw.Write(dstContent);
-            sw.Close();
+            sw.Close();*/
 
             return true;
         }

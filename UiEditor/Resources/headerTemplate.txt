@@ -1,0 +1,28 @@
+#ifndef LY_[name]_H__
+#define LY_[name]_H__
+
+#include "../../../util/CCLayoutNode/CCLayoutNode.h"
+
+[macro]
+
+class LY_[name] : public CCLayoutNode
+{
+public:
+	static LY_[name]* create()
+	{
+		LY_[name]* ret = new LY_[name]();
+		ret->init();
+		ret->autorelease();
+		return ret;
+	}
+
+[function]
+
+protected:
+	bool init()
+	{
+		return CCLayoutNode::initWithPath("layout/[name].layout");
+	}
+};
+
+#endif

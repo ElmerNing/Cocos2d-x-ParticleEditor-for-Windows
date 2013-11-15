@@ -16,6 +16,8 @@ namespace UiEditor
     {
         CCNode mBaseNode = null;
 
+        static CCNode mCopyNode = null;
+
         public UiDesignWidget()
         {
             InitializeComponent();
@@ -188,6 +190,36 @@ namespace UiEditor
             }
         }
 
+        private void OnCopyClick(object sender, EventArgs e)
+        {
+            CCTreeNode tSelNode = (CCTreeNode)mNodesTree.SelectedNode;
+            if (tSelNode == null)
+                return;
+
+            mCopyNode = tSelNode.CCNode;
+        }
+
+        private void OnPastClick(object sender, EventArgs e)
+        {
+            CCTreeNode tSelNode = (CCTreeNode)mNodesTree.SelectedNode;
+            if (tSelNode == null)
+                return;
+            if (mCopyNode == null)
+                return;
+
+            string name = GetInput();
+            if (name == null)
+            {
+                return;
+            }
+
+            tSelNode.CCNode.addChild(name, mCopyNode);
+
+            mBaseNode = CCNode.FromJson<CCNode>(mBaseNode.ToJson());
+            mBaseNode = CCNode.FromJson<CCNode>(mBaseNode.ToJson());
+            InitWithCCNode(mBaseNode);
+        }
+
         private void OnFreshClick(object sender, EventArgs e)
         {
             if (mBaseNode != null)
@@ -245,6 +277,18 @@ namespace UiEditor
                 pt.x += 1;
             }
             OnFreshClick(null, null);
+        }
+
+        private string GetInput()
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            DialogResult re = dlg.ShowDialog();
+            if (re == DialogResult.OK)
+            {
+                string name = Path.GetFileName(dlg.FileName);
+                return name;
+            }
+            return null;
         }
     }
 

@@ -1,0 +1,6 @@
+	[type]* get_[key]()
+	{
+		return dynamic_cast<[type]*>(this->getChildByName("[key]"));
+	}
+	
+
