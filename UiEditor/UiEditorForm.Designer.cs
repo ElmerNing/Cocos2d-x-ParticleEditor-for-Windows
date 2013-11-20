@@ -31,12 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.mPreviewPanel = new System.Windows.Forms.Panel();
             this.mTimeTick = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.mDesignWidget = new UiEditor.UiDesignWidget();
+            this.mPreviewPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mPreviewPanel
             // 
-            this.mPreviewPanel.Location = new System.Drawing.Point(776, 1);
+            this.mPreviewPanel.Controls.Add(this.panel1);
+            this.mPreviewPanel.Location = new System.Drawing.Point(778, -2);
             this.mPreviewPanel.Name = "mPreviewPanel";
             this.mPreviewPanel.Size = new System.Drawing.Size(640, 960);
             this.mPreviewPanel.TabIndex = 0;
@@ -45,6 +48,14 @@
             // 
             this.mTimeTick.Enabled = true;
             this.mTimeTick.Tick += new System.EventHandler(this.OnTimeTick);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(640, 960);
+            this.panel1.TabIndex = 2;
+            this.panel1.Click += new System.EventHandler(this.OnClick);
             // 
             // mDesignWidget
             // 
@@ -63,6 +74,7 @@
             this.Name = "UiEditorForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.OnFormLoad);
+            this.mPreviewPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -72,6 +84,7 @@
         private System.Windows.Forms.Panel mPreviewPanel;
         private System.Windows.Forms.Timer mTimeTick;
         private UiDesignWidget mDesignWidget;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

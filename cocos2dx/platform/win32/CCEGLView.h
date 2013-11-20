@@ -88,7 +88,7 @@ public:
 	//CHANGED_BY_FJZ
 protected:
 
-private:
+public:
     bool m_bCaptured;
     static HWND m_hWnd;//CHANGED_BY_FJZ
     HDC  m_hDC;

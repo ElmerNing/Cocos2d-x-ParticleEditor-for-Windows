@@ -13,6 +13,7 @@ namespace UiEditor
         public delegate bool MAddSpriteFramesWithFile(StringBuilder path);
         public delegate bool MRemoveSpriteFrames();
         public delegate bool MUiChanged(StringBuilder json);
+        public delegate bool MUiPosition(StringBuilder name, ref int x, ref int y);
         
         public Cocos2dDllImporter()
         {

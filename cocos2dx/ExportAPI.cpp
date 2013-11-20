@@ -91,51 +91,30 @@ extern "C"
 		return true;
 	}
 
-	MEDUSA_EXPORT_API bool MParticleChanged(float scale,bool isBackgroundMove,float angle,float angleVar,int destBlendFunc,int srcBlendFunc,float duration,float emissionRate,int emiiterMode,
-		GLbyte endColorR,GLbyte endColorG,GLbyte endColorB,GLbyte endColorA,
-		GLbyte endColorVarR,GLbyte endColorVarG,GLbyte endColorVarB,GLbyte endColorVarA,
-		float endRadius,float endRadiusVar,
-		float endSize,float endSizeVar,
-		float endSpin,float endSpinVar,
-		float gravityX,float gravityY,
-		bool isAutoRemoveOnFinish,
-		float life,float lifeVar,
-		int positionType,
-		float positionVarX,float positionVarY,
-		float radialAccel,float radialAccelVar,
-		float rotatePerSecond,float rotatePerSecondVar,
-		float sourcePositionX,float sourcePositionY,
-		float speed,float speedVar,
-		GLbyte startColorR,GLbyte startColorG,GLbyte startColorB,GLbyte startColorA,
-		GLbyte startColorVarR,GLbyte startColorVarG,GLbyte startColorVarB,GLbyte startColorVarA,
-		float startRadius,float startRadiusVar,
-		float startSize,float startSizeVar,
-		float startSpin,float startSpinVar,
-		float tangentialAccel,float tangentialAccelVar,
-		char* plistPath,char* texturePath,char* textureImageData,
-		unsigned int totalParticles
-		)
+	MEDUSA_EXPORT_API bool MUiPosition(char* name, int& x, int& y)
 	{
-		HelloWorld::ChangeParticle(scale, isBackgroundMove,angle,angleVar,destBlendFunc,srcBlendFunc,duration,emissionRate,emiiterMode,
-			endColorR,endColorG,endColorB,endColorA,
-			endColorVarR,endColorVarG,endColorVarB,endColorVarA,
-			endRadius,endRadiusVar,
-			endSize,endSizeVar,
-			endSpin,endSpinVar,
-			gravityX,gravityY,
-			isAutoRemoveOnFinish,
-			life,lifeVar,
-			positionType,
-			positionVarX,positionVarY,
-			radialAccel,radialAccelVar,
-			rotatePerSecond,rotatePerSecondVar,
-			sourcePositionX,sourcePositionY,
-			speed,speedVar,
-			startColorR,startColorG,startColorB,startColorA,
-			startColorVarR,startColorVarG,startColorVarB,startColorVarA,
-			startRadius,startRadiusVar,startSize,startSizeVar,
-			startSpin,startSpinVar,tangentialAccel,tangentialAccelVar,plistPath,texturePath,textureImageData,totalParticles);
-		return true;
+		CCArray* arr = HelloWorld::mUiNode->getChildren();
+		CCObject* object;
+		CCLayoutNode* node = NULL;
+		CCARRAY_FOREACH(arr, object)
+		{
+			node = dynamic_cast<CCLayoutNode*>(object);
+			if (node != NULL)
+			{
+				CCNode* child = node->getChildByName(name);
+				if (child == NULL)
+					continue;
+				
+				CCPoint point = child->getParent()->convertToWorldSpace(ccp(0,0));
+				x = point.x;
+				y = point.y;
+
+				return true;
+			}
+		}
+
+		return false;
 	}
+
 }
 

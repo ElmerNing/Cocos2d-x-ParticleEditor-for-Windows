@@ -13,6 +13,7 @@ namespace UiEditor
     public partial class UiEditorForm : Form
     {
         private Cocos2dDllImporter mDll = Cocos2dDllImporter.shared();
+        private const int WM_MBUTTONDOWN = 0x0210;
         public UiEditorForm()
         {
             InitializeComponent();
@@ -42,7 +43,20 @@ namespace UiEditor
                 {
                     mDll.Invoke<Cocos2dDllImporter.MAddSpriteFramesWithFile, bool>(new StringBuilder(path));
                 }
-            }            
+            }
         }
+
+        private void OnClick(object sender, EventArgs e)
+        {
+            MouseEventArgs args = (MouseEventArgs)e;
+            if (args.Button == MouseButtons.Middle)
+            {
+                int x = args.X;
+                int y = 960 - args.Y;
+                mDesignWidget.UpdateNodePostion(x, y);
+            }          
+        }
+
+       
     }
 }

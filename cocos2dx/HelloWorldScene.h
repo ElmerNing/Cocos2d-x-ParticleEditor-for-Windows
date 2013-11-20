@@ -18,31 +18,6 @@ public:
 	// implement the "static node()" method manually
 	 CREATE_FUNC(HelloWorld);
 
-	static void HelloWorld::ChangeParticle(float scale,bool isBackgroundMove,float angle,float angleVar,int destBlendFunc,int srcBlendFunc,float duration,float emissionRate,int emiiterMode,
-		GLbyte endColorR,GLbyte endColorG,GLbyte endColorB,GLbyte endColorA,
-		GLbyte endColorVarR,GLbyte endColorVarG,GLbyte endColorVarB,GLbyte endColorVarA,
-		float endRadius,float endRadiusVar,
-		float endSize,float endSizeVar,
-		float endSpin,float endSpinVar,
-		float gravityX,float gravityY,
-		bool isAutoRemoveOnFinish,
-		float life,float lifeVar,
-		int positionType,
-		float positionVarX,float positionVarY,
-		float radialAccel,float radialAccelVar,
-		float rotatePerSecond,float rotatePerSecondVar,
-		float sourcePositionX,float sourcePositionY,
-		float speed,float speedVar,
-		GLbyte startColorR,GLbyte startColorG,GLbyte startColorB,GLbyte startColorA,
-		GLbyte startColorVarR,GLbyte startColorVarG,GLbyte startColorVarB,GLbyte startColorVarA,
-		float startRadius,float startRadiusVar,
-		float startSize,float startSizeVar,
-		float startSpin,float startSpinVar,
-		float tangentialAccel,float tangentialAccelVar,
-		char* plistPath,char* texturePath,char* textureImageData,
-		unsigned int totalParticles
-		);
-
 	static void ChangeUi(CCNode* node);
 
 	static CCParticleSystem* mEmiiter;

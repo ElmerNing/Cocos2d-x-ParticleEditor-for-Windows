@@ -171,7 +171,7 @@ static LRESULT CALLBACK _WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM 
         return s_pMainWindow->WindowProc(uMsg, wParam, lParam);
     }
     else
-    {
+    {	
         return DefWindowProc(hWnd, uMsg, wParam, lParam);
     }
 }

@@ -22,13 +22,52 @@ namespace UiEditor
         {
             InitializeComponent();
         }
-        
-        private void InitWithCCNode(CCNode node)
+
+        public void UpdateNodePostion(int world_x, int world_y)
+        {
+            CCTreeNode tSelNode = (CCTreeNode)mNodesTree.SelectedNode;
+            if (tSelNode == null)
+                return;
+
+            object[] ps = new object[3];
+            ps[0] = new StringBuilder(tSelNode.Text);
+            ps[1] =  new int();
+            ps[2] = new int();
+            bool suc = Cocos2dDllImporter.shared().Invoke<Cocos2dDllImporter.MUiPosition, bool>(
+                ps);
+            if (!suc)
+            {
+                return;
+            }
+
+            int x = (int)ps[1];
+            int y = (int)ps[2];
+
+            float nx = world_x - x;
+            float ny = world_y - y;
+
+            tSelNode.CCNode.position = new CCPoint();
+            tSelNode.CCNode.position.x = nx;
+            tSelNode.CCNode.position.y = ny;
+
+            InitWithCCNode(mBaseNode, tSelNode.CCNode);
+
+            OnFreshClick(null, null);
+        }
+
+        CCNode mSelectNode = null;
+        CCTreeNode mSelectTreeNode = null;
+        private void InitWithCCNode(CCNode node, CCNode selectNode=null)
         {
             Reset();
             mBaseNode = node;
+            mSelectNode = selectNode;
+            mSelectTreeNode = null;
             mNodesTree.Nodes.Add(CreateTreeNode("base", node));
             mNodesTree.SelectedNode = mNodesTree.Nodes[0];
+            if (mSelectTreeNode != null)
+                mNodesTree.SelectedNode = mSelectTreeNode;
+            
             mNodesTree.ExpandAll();
         }
 
@@ -39,7 +78,12 @@ namespace UiEditor
             {
                 foreach (KeyValuePair<string, CCNode> kvp in node.children)
                 {
-                    children.Add(CreateTreeNode(kvp.Key, kvp.Value));
+                    CCTreeNode treenode = CreateTreeNode(kvp.Key, kvp.Value);
+                    if (kvp.Value == mSelectNode)
+                    {
+                        mSelectTreeNode = treenode;
+                    }
+                    children.Add(treenode);
                 }
             }
             return new CCTreeNode(name, children.ToArray(), node);
