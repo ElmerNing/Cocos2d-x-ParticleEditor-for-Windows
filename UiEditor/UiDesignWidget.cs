@@ -33,8 +33,7 @@ namespace UiEditor
             ps[0] = new StringBuilder(tSelNode.Text);
             ps[1] =  new int();
             ps[2] = new int();
-            bool suc = Cocos2dDllImporter.shared().Invoke<Cocos2dDllImporter.MUiPosition, bool>(
-                ps);
+            bool suc = Cocos2dDllImporter.shared().Invoke<Cocos2dDllImporter.MUiPosition, bool>( ps);
             if (!suc)
             {
                 return;
