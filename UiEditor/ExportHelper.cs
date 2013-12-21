@@ -70,7 +70,7 @@ namespace UiEditor
                 functions += function;
             }
             header = header.Replace("[function]", functions);
-            return sw.ToString();
+            return header;
         }
 
         public static bool ExportLayout(string srcPath)

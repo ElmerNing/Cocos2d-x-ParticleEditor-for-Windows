@@ -272,7 +272,7 @@ namespace UiEditor
             }
             else
             {
-                Cocos2dDllImporter.shared().Invoke<Cocos2dDllImporter.MUiChanged, bool>(new StringBuilder(""));
+                Cocos2dDllImporter.shared().Invoke<Cocos2dDllImporter.MUiChanged, bool>(new StringBuilder());
             }
         }
 
